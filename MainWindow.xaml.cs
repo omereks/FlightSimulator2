@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace FlightSimulator2
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainWindow.xamlb
     /// </summary>
     public partial class MainWindow : Window
     {
