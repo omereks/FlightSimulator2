@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FlightSimulator2.view;
+
 
 namespace FlightSimulator2
 {
@@ -20,9 +22,11 @@ namespace FlightSimulator2
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             InitializeComponent();
         }
+
     }
 }
