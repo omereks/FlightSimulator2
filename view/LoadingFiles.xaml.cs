@@ -21,7 +21,10 @@ namespace FlightSimulator2.view
     /// </summary>
     public partial class LoadingFiles : UserControl
     {
+        
+        
         LoadingFilesVM loadingFilesViewModel;
+
 
         public LoadingFiles()
         {
@@ -35,9 +38,14 @@ namespace FlightSimulator2.view
 
         }
 
+        private void IP_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            loadingFilesViewModel.changeName("sd");
+            loadingFilesViewModel.connectFG();
         }
     }
 }

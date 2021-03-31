@@ -13,7 +13,6 @@ namespace FlightSimulator2.model
         public event PropertyChangedEventHandler PropertyChanged;
 
         private String from_playback;
-
         public String From_playback
         {
             get

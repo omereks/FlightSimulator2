@@ -13,17 +13,59 @@ namespace FlightSimulator2.viewModel
         public event PropertyChangedEventHandler PropertyChanged;
 
         public LoadingFilesM model;
+        public Client client;
+
+        public String VM_from_reg
+        {
+            get
+            {
+                return client.From_reg;
+            }
+            set
+            {
+                client.From_reg = value;
+            }
+
+        }
+        public String VM_IP
+        {
+            get
+            {
+                return client.IP;
+            }
+            set
+            {
+                client.IP = value;
+            }
+
+        }
+        public int VM_Port
+        {
+            get
+            {
+                return client.Port;
+            }
+            set
+            {
+                client.Port = value;
+            }
+
+        }
 
         public LoadingFilesVM()
         {
             this.model = new LoadingFilesM();
-
             model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
             {
                 NotifyPropertyChanged("VM_" + e.PropertyName);
             };
+            this.client = new Client();
+            client.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
+            {
+                NotifyPropertyChanged("VM_" + e.PropertyName);
+            };
         }
-
+        
         public void NotifyPropertyChanged(String propName)
         {
             if (this.PropertyChanged != null)
@@ -31,26 +73,12 @@ namespace FlightSimulator2.viewModel
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
         }
-        public void changeName(String s)
+        
+        public void connectFG()
         {
-            model.changeNameModel(s);
-            NotifyPropertyChanged(VM_from_playback);
+            this.client.Connect();
         }
-
-        public String VM_from_playback
-        {
-            get
-            {
-                return model.From_playback;
-            }
-            set
-            {
-                VM_from_playback = value;
-                NotifyPropertyChanged("from_playback");
-            }
-        }
-        public String to_playback;
-
+        
 
     }
 }

@@ -24,9 +24,9 @@
         <TextBox x:Name="to_playback" Grid.Column="1" HorizontalAlignment="Left" Text="Add Destenation Path.." TextWrapping="Wrap" VerticalAlignment="Center" Width="90"/>
 
         <TextBlock x:Name="title_reg" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="1" Text="Reg_FLIGHT" TextWrapping="Wrap" VerticalAlignment="Center"/>
-        <TextBox x:Name="from_reg" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="1" Text="Add Source Path.." TextWrapping="Wrap" VerticalAlignment="Center" Width="90"/>
-        <TextBox x:Name="to_ip" Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="1" Text="Port" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Margin="0,50,0,0"/>
-        <TextBox x:Name="to_port" Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="1" Text="IP" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Margin="0,19,0,0"/>
+        <TextBox x:Name="from_reg" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="1" Text="{Binding VM_from_reg , Mode=TwoWay}" TextWrapping="Wrap" VerticalAlignment="Center" Width="90"/>
+        <TextBox x:Name="to_port" Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="1" Text="{Binding VM_Port , Mode=TwoWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Margin="0,50,0,0"/>
+        <TextBox x:Name="IP" Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="1" Text="{Binding VM_IP , Mode=TwoWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Margin="0,19,0,0"/>
         <Button x:Name="button" Content="Connect" HorizontalAlignment="Center" VerticalAlignment="Top" Height="143" Width="80" Grid.RowSpan="2" Margin="0,25,0,0" Click="button_Click"/>
     </Grid>
 </UserControl>

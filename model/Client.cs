@@ -4,26 +4,91 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Sockets;
+using System.IO;
+using System.Threading;
+using System.ComponentModel;
 
 namespace FlightSimulator2.model
 {
-    class Client{
+    class Client : INotifyPropertyChanged
+    {
 
         TcpClient tcpClient;
         NetworkStream stream;
 
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        public Client(){
-            this.tcpClient = new TcpClient();
-            //this.Connect("127.0.0.1", 5400);
-
-        }
-
-        public void Connect(string ip, int port)
+        /**Gets and Sets**/
+        private String from_reg = @"C:\Users\Omer\source\repos\FlightSimulator2\model";
+        public String From_reg
         {
-            this.tcpClient.Connect(ip, port);
-            this.stream = this.tcpClient.GetStream();
+            get
+            {
+                return from_reg;
+            }
+            set
+            {
+                from_reg = value;
+                NotifyPropertyChangedtify("From_reg");
+            }
         }
+
+        private String ip = "127.0.0.1";
+        public String IP 
+        {
+            get
+            {
+                return ip;
+            }
+            set
+            {
+                ip = value;
+                NotifyPropertyChangedtify("IP");
+            }
+        }
+
+
+        private int port = 5400;
+        public int Port
+        {
+            get
+            {
+                return port;
+            }
+            set
+            {
+                port = value;
+                NotifyPropertyChangedtify("Port");
+            }
+        }
+
+
+
+        /**Constractur**/
+        public Client()
+        {
+            this.tcpClient = new TcpClient();
+        }
+
+
+        /**Connect to FG**/
+        public void Connect()
+        {
+            //ip and port binding from view
+            this.tcpClient.Connect(this.IP, this.Port);
+            this.stream = this.tcpClient.GetStream();
+            
+            //build the path for reg_flight.csv
+            string fileIni = "reg_flight.csv";
+            string transIniFullFileName = Path.Combine(this.from_reg, fileIni);
+
+            //start sending CSV to FG
+            this.SendCSV(transIniFullFileName);
+
+            //Disconnect to the server
+            this.Disconnect();
+        }
+
 
         public void Disconnect()
         {
@@ -41,6 +106,31 @@ namespace FlightSimulator2.model
             catch (Exception) { }
             this.tcpClient = null;
         }
+
+        public void SendCSV(String CSVsrc)
+        {
+            StreamReader csv = new StreamReader(CSVsrc);
+
+            String line_reg = csv.ReadLine();
+            while (line_reg != null)
+            {
+                //read a line from CSV reg
+                line_reg += "\n";
+                Byte[] lineInBytes = System.Text.Encoding.ASCII.GetBytes(line_reg);
+                // Send the message to the connected TcpServer
+                /**Console.WriteLine(line);*/ //try to print the lines of the reg_file 
+                this.stream.Write(lineInBytes, 0, lineInBytes.Length);
+                //read the next line
+                line_reg = csv.ReadLine();
+                
+                //sleeping for 100 ms 
+                Thread.Sleep(100);
+            }
+
+            // Close - file, stream and socket
+            csv.Close();
+        }
+
 
         public void Write(string command)
         {
@@ -77,6 +167,14 @@ namespace FlightSimulator2.model
             return "ERR";
         }
 
+
+        public void NotifyPropertyChangedtify(string propName)
+        {
+            if (this.PropertyChanged != null)
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            }
+        }
 
 
     }
