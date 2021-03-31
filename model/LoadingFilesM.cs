@@ -12,7 +12,7 @@ namespace FlightSimulator2.model
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private String from_playback;
+        private String from_playback = @"C:\Downloads";
         public String From_playback
         {
             get
@@ -27,11 +27,29 @@ namespace FlightSimulator2.model
             }
         }
 
-        public void CopyXML(String src, String dst)
+        private String to_playback = @"C:\Program Files\FlightGear 2020.3.6\data\Protocol";
+        public String To_playback
+        {
+            get
+            {
+
+                return to_playback;
+            }
+            set
+            {
+                to_playback = value;
+                NotifyPropertyChanged("To_playback");
+            }
+        }
+
+        public void CopyXML()
         {
             try
             {
-                File.Copy(src, dst, true);
+                string fileName = "playback_small.xml";
+                string sourceFile = System.IO.Path.Combine(this.from_playback, fileName);
+                string destFile = System.IO.Path.Combine(this.to_playback, fileName);
+                File.Copy(sourceFile, destFile, true);
             }
             catch (IOException iox)
             {
@@ -45,14 +63,6 @@ namespace FlightSimulator2.model
             {
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
-        }
-
-        public void changeNameModel(String s)
-        {
-            from_playback = s;
-        }
-
-
-        
+        }        
     }
 }

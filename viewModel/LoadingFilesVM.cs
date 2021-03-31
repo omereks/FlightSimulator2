@@ -15,6 +15,33 @@ namespace FlightSimulator2.viewModel
         public LoadingFilesM model;
         public Client client;
 
+
+        public String VM_from_playback
+        {
+            get
+            {
+                return model.From_playback;
+            }
+            set
+            {
+                model.From_playback = value;
+            }
+
+        }
+
+        public String VM_to_playback
+        {
+            get
+            {
+                return model.To_playback;
+            }
+            set
+            {
+                model.To_playback = value;
+            }
+
+        }
+
         public String VM_from_reg
         {
             get
@@ -73,7 +100,12 @@ namespace FlightSimulator2.viewModel
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
         }
-        
+
+        public void copyXML()
+        {
+            this.model.CopyXML();
+        }
+
         public void connectFG()
         {
             this.client.Connect();

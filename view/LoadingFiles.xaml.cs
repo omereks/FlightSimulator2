@@ -45,6 +45,7 @@ namespace FlightSimulator2.view
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            loadingFilesViewModel.copyXML();
             loadingFilesViewModel.connectFG();
         }
     }
