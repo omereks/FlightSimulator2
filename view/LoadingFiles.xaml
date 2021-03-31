@@ -17,10 +17,11 @@
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
         </Grid.RowDefinitions>
-           
 
+        <Border Grid.Row="0" Grid.ColumnSpan="4" BorderBrush="#FF3C3939" BorderThickness="1" />
+        <Border Grid.Row="1" Grid.ColumnSpan="4" BorderBrush="#FF3C3939" BorderThickness="1" />
         <TextBlock x:Name="title_playback" Text="Copy playback_smal.xml"  Grid.Column="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" FontWeight="Bold"/>
-        
+
         <Grid Grid.Column="1" Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="100*"/>
@@ -39,7 +40,7 @@
             <TextBox x:Name="to_playback" Text="{Binding VM_to_playback}" Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="150"/>
         </Grid>
 
-
+        
 
         <TextBlock x:Name="title_reg" Text="Enter ref_flight.csv File:" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="14" FontWeight="Bold"/>
 
@@ -64,7 +65,7 @@
             <TextBlock x:Name="portCSV" Text="Port"  HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center"/>
             <TextBox x:Name="to_port" Text="{Binding VM_Port , Mode=TwoWay}" HorizontalAlignment="Center"  Grid.Row="3"  TextWrapping="Wrap" VerticalAlignment="Center" Width="90"/>
         </Grid>
-        
-        <Button x:Name="button" Grid.Column="3" Content="Connect" HorizontalAlignment="Center" VerticalAlignment="Center" Height="143" Width="80" Grid.RowSpan="2" Click="button_Click"/>
+        <Button x:Name="buttonCopy" Grid.Row="0"  Grid.Column="3" Content="Copy XML" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Width="150" Click="CopyXML_Click"/>
+        <Button x:Name="buttonConnect" Grid.Row="1" Grid.Column="3" Content="Connect To FG" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Width="150" Click="ConnectFG_Click"/>
     </Grid>
 </UserControl>

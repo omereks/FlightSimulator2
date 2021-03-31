@@ -43,9 +43,12 @@ namespace FlightSimulator2.view
 
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void CopyXML_Click(object sender, RoutedEventArgs e)
         {
             loadingFilesViewModel.copyXML();
+        }
+        private void ConnectFG_Click(object sender, RoutedEventArgs e)
+        {
             loadingFilesViewModel.connectFG();
         }
     }
