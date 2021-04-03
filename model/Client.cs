@@ -194,6 +194,11 @@ namespace FlightSimulator2.model
             this.control_bar = m;
         }
 
+        public string currentFlightState()
+        {
+            return this.control_bar.currentState();
+        }
+
 
     }
 }

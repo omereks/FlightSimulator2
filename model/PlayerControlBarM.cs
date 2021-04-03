@@ -122,6 +122,10 @@ namespace FlightSimulator2.model
         {
             this.flight_data = f;
         }
+        public string currentState()
+        {
+            return this.flight_state[current_line];
+        }
 
         
         // INotifyPropertyChanged implementation.
