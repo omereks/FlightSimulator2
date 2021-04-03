@@ -23,7 +23,7 @@ namespace FlightSimulator2.view
     {
         
         
-        LoadingFilesVM loadingFilesViewModel;
+         LoadingFilesVM loadingFilesViewModel;
 
 
         public LoadingFiles()

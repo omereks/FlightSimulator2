@@ -86,7 +86,8 @@ namespace FlightSimulator2.viewModel
             {
                 NotifyPropertyChanged("VM_" + e.PropertyName);
             };
-            this.client = new Client();
+            // changed because client is singelton.
+            this.client = Client.client_instance;
             client.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
             {
                 NotifyPropertyChanged("VM_" + e.PropertyName);

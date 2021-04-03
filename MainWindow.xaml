@@ -16,7 +16,6 @@
             <RowDefinition Height="100*"/>
         </Grid.RowDefinitions>
         <view:LoadingFiles x:Name="hk"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="780" Height="197" />
-
-
-    </Grid>
+        <view:PlayerControllBar x:Name="ds" HorizontalAlignment="Center" VerticalAlignment="Center" Width="764" Height="422" Margin="-21,72,49,-74.5" Grid.RowSpan="2" />
+            </Grid>
 </Window>

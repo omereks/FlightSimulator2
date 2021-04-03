@@ -7,7 +7,6 @@ using System.Net.Sockets;
 using System.IO;
 using System.Threading;
 using System.ComponentModel;
-
 namespace FlightSimulator2.model
 {
     class Client : INotifyPropertyChanged
@@ -15,7 +14,20 @@ namespace FlightSimulator2.model
 
         TcpClient tcpClient;
         NetworkStream stream;
-
+        PlayerControlBarM control_bar;
+        // singelton! 
+        private static Client client = new Client();
+        public static Client client_instance
+        {
+            get
+            {
+                if(client == null)
+                {
+                    client = new Client();
+                }
+                return client;
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
 
         /**Gets and Sets**/
@@ -65,17 +77,18 @@ namespace FlightSimulator2.model
 
 
         /**Constractur**/
-        public Client()
+        private Client()
         {
-            this.tcpClient = new TcpClient();
+           this.tcpClient = new TcpClient();
         }
 
 
         /**Connect to FG**/
         public void Connect()
         {
+            client_instance.tcpClient = new TcpClient();
             //ip and port binding from view
-            this.tcpClient.Connect(this.IP, this.Port);
+            client_instance.tcpClient.Connect(this.IP, this.Port);
             this.stream = this.tcpClient.GetStream();
             
             //build the path for reg_flight.csv
@@ -83,10 +96,7 @@ namespace FlightSimulator2.model
             string transIniFullFileName = Path.Combine(this.from_reg, fileIni);
 
             //start sending CSV to FG
-            this.SendCSV(transIniFullFileName);
-
-            //Disconnect to the server
-            this.Disconnect();
+            client.SendCSV(transIniFullFileName);
         }
 
 
@@ -110,25 +120,29 @@ namespace FlightSimulator2.model
         public void SendCSV(String CSVsrc)
         {
             StreamReader csv = new StreamReader(CSVsrc);
-
-            String line_reg = csv.ReadLine();
-            while (line_reg != null)
+            control_bar.setFlight(csv); // get the flight data
+            control_bar.flightAnalysis(); // analysis the flight data.
+            String line_reg = control_bar.getFlightState();
+            new Thread(delegate()
             {
-                //read a line from CSV reg
-                line_reg += "\n";
-                Byte[] lineInBytes = System.Text.Encoding.ASCII.GetBytes(line_reg);
-                // Send the message to the connected TcpServer
-                /**Console.WriteLine(line);*/ //try to print the lines of the reg_file 
-                this.stream.Write(lineInBytes, 0, lineInBytes.Length);
-                //read the next line
-                line_reg = csv.ReadLine();
-                
-                //sleeping for 100 ms 
-                Thread.Sleep(100);
-            }
+                while (line_reg != null)
+                {
+                        //read a line from CSV reg
+                        line_reg += "\n";
+                    Byte[] lineInBytes = System.Text.Encoding.ASCII.GetBytes(line_reg);
+                        // Send the message to the connected TcpServer
+                        /**Console.WriteLine(line);*/ //try to print the lines of the reg_file 
+                        this.stream.Write(lineInBytes, 0, lineInBytes.Length);
+                        //read the next line
+                        line_reg = control_bar.getFlightState();
+                        // line_reg = csv.ReadLine();
+                        //sleeping for 100 ms 
+                        Thread.Sleep(100);
+                }
+                csv.Close();
+            }).Start();
 
-            // Close - file, stream and socket
-            csv.Close();
+
         }
 
 
@@ -174,6 +188,10 @@ namespace FlightSimulator2.model
             {
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
+        }
+        public void setControlBar(PlayerControlBarM m)
+        {
+            this.control_bar = m;
         }
 
 

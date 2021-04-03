@@ -62,9 +62,14 @@
     </ApplicationDefinition>
     <Compile Include="model\Client.cs" />
     <Compile Include="model\LoadingFilesM.cs" />
+    <Compile Include="model\PlayerControlBarM.cs" />
     <Compile Include="viewModel\LoadingFilesVM.cs" />
+    <Compile Include="viewModel\PlayerControllBarVM.cs" />
     <Compile Include="view\LoadingFiles.xaml.cs">
       <DependentUpon>LoadingFiles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\PlayerControllBar.xaml.cs">
+      <DependentUpon>PlayerControllBar.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -79,6 +84,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="view\LoadingFiles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\PlayerControllBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -111,6 +120,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="view\playpuse.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
