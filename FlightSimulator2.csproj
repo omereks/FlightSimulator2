@@ -65,11 +65,15 @@
     <Compile Include="model\PlayerControlBarM.cs" />
     <Compile Include="viewModel\LoadingFilesVM.cs" />
     <Compile Include="viewModel\PlayerControllBarVM.cs" />
+    <Compile Include="viewModel\SpeedRatioVM.cs" />
     <Compile Include="view\LoadingFiles.xaml.cs">
       <DependentUpon>LoadingFiles.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\PlayerControllBar.xaml.cs">
       <DependentUpon>PlayerControllBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\SpeedRatio.xaml.cs">
+      <DependentUpon>SpeedRatio.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -88,6 +92,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="view\PlayerControllBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\SpeedRatio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -74,6 +74,20 @@ namespace FlightSimulator2.model
             }
         }
 
+        private double speedRatio = 1.0;
+        public double SpeedRatio
+        {
+            get
+            {
+                return speedRatio;
+            }
+            set
+            {
+                speedRatio = value;
+                NotifyPropertyChangedtify("SpeedRatio");
+            }
+        }
+
 
 
         /**Constractur**/
@@ -120,6 +134,7 @@ namespace FlightSimulator2.model
         public void SendCSV(String CSVsrc)
         {
             StreamReader csv = new StreamReader(CSVsrc);
+            int SpeedTransport = 1;
             control_bar.setFlight(csv); // get the flight data
             control_bar.flightAnalysis(); // analysis the flight data.
             String line_reg = control_bar.getFlightState();
@@ -127,17 +142,26 @@ namespace FlightSimulator2.model
             {
                 while (line_reg != null)
                 {
-                        //read a line from CSV reg
-                        line_reg += "\n";
+                    //read a line from CSV reg
+                    line_reg += "\n";
                     Byte[] lineInBytes = System.Text.Encoding.ASCII.GetBytes(line_reg);
-                        // Send the message to the connected TcpServer
-                        /**Console.WriteLine(line);*/ //try to print the lines of the reg_file 
-                        this.stream.Write(lineInBytes, 0, lineInBytes.Length);
-                        //read the next line
-                        line_reg = control_bar.getFlightState();
-                        // line_reg = csv.ReadLine();
-                        //sleeping for 100 ms 
+                    // Send the message to the connected TcpServer
+                    /**Console.WriteLine(line);*/ //try to print the lines of the reg_file 
+                    this.stream.Write(lineInBytes, 0, lineInBytes.Length);
+                    //read the next line
+                    line_reg = control_bar.getFlightState();
+                    // line_reg = csv.ReadLine();
+                    //sleeping for 100 ms 
+                    try { 
+                        SpeedTransport = Convert.ToInt32(100 / this.speedRatio);
+                        Thread.Sleep(SpeedTransport);
+                    }
+                    catch (Exception) 
+                    {
                         Thread.Sleep(100);
+                    }
+                    
+
                 }
                 csv.Close();
             }).Start();
