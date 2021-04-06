@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.NETCore.UniversalWindowsPlatform.6.2.12\build\Microsoft.NETCore.UniversalWindowsPlatform.props" Condition="Exists('packages\Microsoft.NETCore.UniversalWindowsPlatform.6.2.12\build\Microsoft.NETCore.UniversalWindowsPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -14,6 +15,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -61,11 +64,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="model\Client.cs" />
+    <Compile Include="model\FlightInsturmentsM.cs" />
     <Compile Include="model\LoadingFilesM.cs" />
     <Compile Include="model\PlayerControlBarM.cs" />
+    <Compile Include="viewModel\FlightInsturmentsVM.cs" />
     <Compile Include="viewModel\LoadingFilesVM.cs" />
     <Compile Include="viewModel\PlayerControllBarVM.cs" />
     <Compile Include="viewModel\SpeedRatioVM.cs" />
+    <Compile Include="view\FlightInsturments.xaml.cs">
+      <DependentUpon>FlightInsturments.xaml</DependentUpon>
+    </Compile>
     <Compile Include="view\LoadingFiles.xaml.cs">
       <DependentUpon>LoadingFiles.xaml</DependentUpon>
     </Compile>
@@ -87,6 +95,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="view\FlightInsturments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="view\LoadingFiles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -120,6 +132,7 @@
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="model\reg_flight.csv" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -131,5 +144,37 @@
   <ItemGroup>
     <Resource Include="view\playpuse.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="view\airplan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="view\output-onlinepngtools.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="view\output-onlinepngtools %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="view\output-onlinepngtools %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="view\pngegg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="view\output-onlinepngtools %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="view\Untitled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="view\rsrs.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.NETCore.UniversalWindowsPlatform.6.2.12\build\Microsoft.NETCore.UniversalWindowsPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.NETCore.UniversalWindowsPlatform.6.2.12\build\Microsoft.NETCore.UniversalWindowsPlatform.props'))" />
+    <Error Condition="!Exists('packages\Microsoft.NETCore.UniversalWindowsPlatform.6.2.12\build\Microsoft.NetCore.UniversalWindowsPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.NETCore.UniversalWindowsPlatform.6.2.12\build\Microsoft.NetCore.UniversalWindowsPlatform.targets'))" />
+  </Target>
+  <Import Project="packages\Microsoft.NETCore.UniversalWindowsPlatform.6.2.12\build\Microsoft.NetCore.UniversalWindowsPlatform.targets" Condition="Exists('packages\Microsoft.NETCore.UniversalWindowsPlatform.6.2.12\build\Microsoft.NetCore.UniversalWindowsPlatform.targets')" />
 </Project>

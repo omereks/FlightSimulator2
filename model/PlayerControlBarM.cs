@@ -124,6 +124,7 @@ namespace FlightSimulator2.model
         }
         public string currentState()
         {
+            if (!this.flight_state.ContainsKey(current_line)) return null;
             return this.flight_state[current_line];
         }
 
