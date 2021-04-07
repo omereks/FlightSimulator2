@@ -20,6 +20,7 @@ namespace FlightSimulator2.view
     /// </summary>
     public partial class FeaturesGraph : UserControl
     {
+        private viewModel.FeaturesGraphVM viewModel;
 
         private string[] featuresArr = { "aileron", "elevator", "rudder", "flaps", "slats", "speedbrake", "throttle", "throttle", "engine-pump", "engine-pump", // flight features according to XML file
             "electric-pump", "electric-pump", "external-power", "APU-generator", "latitude-deg", "longitude-deg", "altitude-ft", "roll-deg", "pitch-deg",
@@ -42,6 +43,8 @@ namespace FlightSimulator2.view
 
         public FeaturesGraph()
         {
+            viewModel = new viewModel.FeaturesGraphVM();
+            DataContext = viewModel;
             InitializeComponent();
             bindListBox();
         }
