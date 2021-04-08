@@ -69,19 +69,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="model\Client.cs" />
-    <Compile Include="model\FeaturesGraph.xaml.cs">
-      <DependentUpon>FeaturesGraph.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="model\FeaturesGraphM.cs" />
     <Compile Include="model\LoadingFilesM.cs" />
     <Compile Include="model\PlayerControlBarM.cs" />
-    <Compile Include="viewModel\FeaturesGraph.xaml.cs">
-      <DependentUpon>FeaturesGraph.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="viewModel\FeaturesGraphVM.cs" />
     <Compile Include="viewModel\LoadingFilesVM.cs" />
     <Compile Include="viewModel\PlayerControllBarVM.cs" />
     <Compile Include="viewModel\SpeedRatioVM.cs" />
-    <Compile Include="view\FeaturesGraph.xaml.cs">
-      <DependentUpon>FeaturesGraph.xaml</DependentUpon>
+    <Compile Include="view\FeaturesGraphV.xaml.cs">
+      <DependentUpon>FeaturesGraphV.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\LoadingFiles.xaml.cs">
       <DependentUpon>LoadingFiles.xaml</DependentUpon>
@@ -104,15 +100,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="model\FeaturesGraph.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="viewModel\FeaturesGraph.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="view\FeaturesGraph.xaml">
+    <Page Include="view\FeaturesGraphV.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

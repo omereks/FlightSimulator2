@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using OxyPlot.Annotations;
 using OxyPlot;
+using OxyPlot.Axes;
 
 namespace FlightSimulator2.viewModel
 {
@@ -22,8 +23,8 @@ namespace FlightSimulator2.viewModel
             }
         }
 
-
-        private string[] featuresArr = { "aileron", "elevator", "rudder", "flaps", "slats", "speedbrake", "throttle", "throttle", "engine-pump", "engine-pump", // flight features according to XML file
+        public List<DataPoint> featurePoints;
+        public string[] featuresArr = { "aileron", "elevator", "rudder", "flaps", "slats", "speedbrake", "throttle", "throttle", "engine-pump", "engine-pump", // flight features according to XML file
             "electric-pump", "electric-pump", "external-power", "APU-generator", "latitude-deg", "longitude-deg", "altitude-ft", "roll-deg", "pitch-deg",
             "heading-deg", "side-slip-deg", "airspeed-kt", "glideslope", "vertical-speed-fps", "airspeed-indicator_indicated-speed-kt", "altimeter_indicated-altitude-ft",
             "altimeter_pressure-alt-ft", "attitude-indicator_indicated-pitch-deg", "attitude-indicator_indicated-roll-deg", "attitude-indicator_internal-pitch-deg",
@@ -48,6 +49,19 @@ namespace FlightSimulator2.viewModel
         public FeaturesGraphVM()
         {
             PlotModel = new PlotModel();
+        }
+
+        private void SetUpModel()
+        {
+            PlotModel.LegendTitle = "Graph";
+            PlotModel.LegendOrientation = LegendOrientation.Horizontal;
+            PlotModel.LegendPlacement = LegendPlacement.Outside;
+            PlotModel.LegendPosition = LegendPosition.TopRight;
+            PlotModel.LegendBackground = OxyColor.FromAColor(200, OxyColors.White);
+            PlotModel.LegendBorder = OxyColors.Black;
+
+            PlotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Bottom, Minimum = 0, MinorGridlineStyle = LineStyle.Dot, Maximum = 100 });            
+            PlotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Left, Minimum = 0, MinorGridlineStyle = LineStyle.Dot, Maximum = 100 });
         }
 
     }
