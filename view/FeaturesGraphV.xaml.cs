@@ -1,6 +1,7 @@
 ﻿using System;
 using FlightSimulator2.viewModel;
 using FlightSimulator2.model;
+using FlightSimulator2;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,7 @@ namespace FlightSimulator2.view
         public FeaturesGraphVM _ViewModel
         {
             get { return _ViewModel; }
+            set { _viewModel = value; }
         }
         public FeaturesGraphV()
         {
@@ -37,7 +39,7 @@ namespace FlightSimulator2.view
 
         private void featuresListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // todo
+            _viewModel.featureSelected(featuresListBox.SelectedItem.ToString());
         }
     }
 }

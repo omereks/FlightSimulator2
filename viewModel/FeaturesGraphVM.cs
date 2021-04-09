@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlightSimulator2.model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,62 +8,53 @@ using System.ComponentModel;
 using OxyPlot.Annotations;
 using OxyPlot;
 using OxyPlot.Axes;
+using FlightSimulator2.viewModel;
 
 namespace FlightSimulator2.viewModel
 {
-    class FeaturesGraphVM : INotifyPropertyChanged
+    public class FeaturesGraphVM : INotifyPropertyChanged
     {
-        private PlotModel plotModel;
-        public PlotModel PlotModel
+        private FeaturesGraphM model;
+        public FeaturesGraphM Model
         {
-            get { return plotModel; }
-            set 
-            {
-                plotModel = value;
-                OnPropertyChanged("PlotModel");
-            }
+            get { return model; }
         }
 
-        public List<DataPoint> featurePoints;
-        public string[] featuresArr = { "aileron", "elevator", "rudder", "flaps", "slats", "speedbrake", "throttle", "throttle", "engine-pump", "engine-pump", // flight features according to XML file
-            "electric-pump", "electric-pump", "external-power", "APU-generator", "latitude-deg", "longitude-deg", "altitude-ft", "roll-deg", "pitch-deg",
-            "heading-deg", "side-slip-deg", "airspeed-kt", "glideslope", "vertical-speed-fps", "airspeed-indicator_indicated-speed-kt", "altimeter_indicated-altitude-ft",
-            "altimeter_pressure-alt-ft", "attitude-indicator_indicated-pitch-deg", "attitude-indicator_indicated-roll-deg", "attitude-indicator_internal-pitch-deg",
-            "attitude-indicator_internal-roll-deg", "encoder_indicated-altitude-ft", "encoder_pressure-alt-ft", "gps_indicated-altitude-ft", "gps_indicated-ground-speed-kt",
-            "gps_indicated-vertical-speed", "indicated-heading-deg", "magnetic-compass_indicated-heading-deg", "slip-skid-ball_indicated-slip-skid",
-            "turn-indicator_indicated-turn-rate", "vertical-speed-indicator_indicated-speed-fpm", "engine_rpm"};
+        public List<string> VM_FeaturesList
+        {
+            get { return model.M_FeaturesList; }
+        }
 
+        public List<DataPoint> VM_Points
+        {
+            get { return model.M_Points; }
+            set
+            {
+                model.M_Points = value;
+                NotifyPropertyChanged(nameof(VM_Points));
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
-        /// [NotifyPropertyChangedInvocator]
-
-
-        protected virtual void OnPropertyChanged(string propertyName)
+        public void NotifyPropertyChanged(string name)
         {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
+            if (this.PropertyChanged != null)
             {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-
+                this.PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
-        }
 
-        public FeaturesGraphVM()
+        }
+        public void featureSelected(string selectedItem)
         {
-            PlotModel = new PlotModel();
+            this.model.FeatureSelected(selectedItem);
         }
 
-        private void SetUpModel()
+        public FeaturesGraphVM(FeaturesGraphM model)
         {
-            PlotModel.LegendTitle = "Graph";
-            PlotModel.LegendOrientation = LegendOrientation.Horizontal;
-            PlotModel.LegendPlacement = LegendPlacement.Outside;
-            PlotModel.LegendPosition = LegendPosition.TopRight;
-            PlotModel.LegendBackground = OxyColor.FromAColor(200, OxyColors.White);
-            PlotModel.LegendBorder = OxyColors.Black;
-
-            PlotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Bottom, Minimum = 0, MinorGridlineStyle = LineStyle.Dot, Maximum = 100 });            
-            PlotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Left, Minimum = 0, MinorGridlineStyle = LineStyle.Dot, Maximum = 100 });
+            this.model = model;
+            model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
+            {
+                NotifyPropertyChanged("VM_" + e.PropertyName);
+            };
         }
-
     }
 }

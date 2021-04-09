@@ -6,13 +6,11 @@
              xmlns:oxy="http://oxyplot.org/wpf"
              xmlns:local="clr-namespace:FlightSimulator2.view" 
              xmlns:viewmodel="clr-namespace:FlightSimulator2.viewModel" 
-             d:DataContext="{d:DesignInstance Type=viewmodel:FeaturesGraphVM}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Width="800" Height="450">
-        <Grid.ColumnDefinitions Width="4*"/>
-        <Grid.RowDefinitions Width="4*"/>
-        <ListBox x:Name="featuresListBox" SelectionChanged="featuresListBox_SelectionChanged" ItemsSource="{Binding VM_FeaturesArr}" Grid.Row="0" Grid.Column="0" Width="200" Margin="10,10,590,158"/>
+       
+        <ListBox x:Name="featuresListBox" SelectionChanged="featuresListBox_SelectionChanged" ItemsSource="{Binding VM_FeaturesList}"   Width="200" Margin="10,10,590,158"/>
         <oxy:Plot x:Name="FeaturesGraph" Title="Feature"  Margin="238,11,298,239">
             <oxy:Plot.Series>
                 <oxy:LineSeries  ItemsSource="{Binding VM_Points}" />
