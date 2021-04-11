@@ -47,6 +47,7 @@ namespace FlightSimulator2.model
             }
         }
 
+        // init according to xml file
         public void initFeaturesList()
         {
             M_featuresList = new List<string> { "aileron", "elevator", "rudder", "flaps", "slats", "speedbrake", "throttle", "throttle", "engine-pump", "engine-pump", // flight features according to XML file
