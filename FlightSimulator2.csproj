@@ -41,9 +41,17 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="OxyPlot, Version=2.0.0.0, Culture=neutral, PublicKeyToken=638079a8f0bd61e9, processorArchitecture=MSIL">
+      <HintPath>packages\OxyPlot.Core.2.0.0\lib\net45\OxyPlot.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot.Wpf, Version=2.0.0.0, Culture=neutral, PublicKeyToken=75e952ba404cdbb0, processorArchitecture=MSIL">
+      <HintPath>packages\OxyPlot.Wpf.2.0.0\lib\net45\OxyPlot.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,13 +72,18 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="model\Client.cs" />
+    <Compile Include="model\FeaturesGraphM.cs" />
     <Compile Include="model\FlightInsturmentsM.cs" />
     <Compile Include="model\LoadingFilesM.cs" />
     <Compile Include="model\PlayerControlBarM.cs" />
+    <Compile Include="viewModel\FeaturesGraphVM.cs" />
     <Compile Include="viewModel\FlightInsturmentsVM.cs" />
     <Compile Include="viewModel\LoadingFilesVM.cs" />
     <Compile Include="viewModel\PlayerControllBarVM.cs" />
     <Compile Include="viewModel\SpeedRatioVM.cs" />
+    <Compile Include="view\FeaturesGraphV.xaml.cs">
+      <DependentUpon>FeaturesGraphV.xaml</DependentUpon>
+    </Compile>
     <Compile Include="view\FlightInsturments.xaml.cs">
       <DependentUpon>FlightInsturments.xaml</DependentUpon>
     </Compile>
@@ -95,6 +108,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="view\FeaturesGraphV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="view\FlightInsturments.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

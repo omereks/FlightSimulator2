@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FlightSimulator2"
         xmlns:view="clr-namespace:FlightSimulator2.view"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="2000">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100*"/>
@@ -15,6 +15,7 @@
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
         </Grid.RowDefinitions>
+        <view:FeaturesGraphV x:Name="fg"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="804" Height="300" Margin="370,-329,819.6,239.4" Loaded="fg_Loaded"/>
         <view:LoadingFiles x:Name="hk"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="780" Height="197" />
         <view:PlayerControllBar x:Name="ds" HorizontalAlignment="Center" VerticalAlignment="Center" Width="764" Height="422" Margin="-21,72,49,-74.5" Grid.RowSpan="2" />
         <view:SpeedRatio x:Name="sr" HorizontalAlignment="Center" VerticalAlignment="Center"   Margin="128,121,481,72" Grid.Row="1" Width="183" Height="17" />
