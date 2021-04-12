@@ -6,20 +6,19 @@
              xmlns:oxy="http://oxyplot.org/wpf"
              xmlns:local="clr-namespace:FlightSimulator2.view" 
              xmlns:viewmodel="clr-namespace:FlightSimulator2.viewModel" 
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" Height="212.4" Width="464">
     <Grid Width="800" Height="450">
 
-        <ListBox x:Name="featuresListBox" SelectionChanged="featuresListBox_SelectionChanged" ItemsSource="{Binding VM_FeaturesList}"   Width="200" Margin="10,10,590,158"/>
-        <oxy:Plot x:Name="FeaturesGraph" Title="Feature"  Margin="238,11,298,239">
+        <ListBox x:Name="featuresListBox" SelectionChanged="featuresListBox_SelectionChanged" SelectedItem="{Binding NameOfFeatureSelected , Mode=TwoWay}" ItemsSource="{Binding VM_FeaturesList}" Margin="10,10,668,257"/>
+        <oxy:Plot x:Name="FeaturesGraph" Title="{Binding NameOfFeatureSelected , Mode=TwoWay}"  Margin="153,57,513,257" >
             <oxy:Plot.Series>
-                <oxy:LineSeries  ItemsSource="{Binding VM_Points}" />
+                <oxy:LineSeries  ItemsSource="{Binding VM_Points}"/>
             </oxy:Plot.Series>
         </oxy:Plot>
 
-        <oxy:Plot x:Name="CorrelationGraph" Title="Correlated Feature" Margin="526,10,10,239">
+        <oxy:Plot x:Name="CorrelationGraph" Title="{Binding  VM_CorrelatedF, Mode=TwoWay}" Margin="319,57,357,0" Height="136" VerticalAlignment="Top">
             <oxy:Plot.Series>
-                <oxy:LineSeries  ItemsSource="{Binding  }" />
+                <oxy:LineSeries  ItemsSource="{Binding VM_CorrelatedPoints}" />
             </oxy:Plot.Series>
         </oxy:Plot>
     </Grid>

@@ -28,7 +28,7 @@ namespace FlightSimulator2
             InitializeComponent();
         }
 
-        private void fg_Loaded()
+        private void fg_Loaded(object sender, RoutedEventArgs e)
         {
 
         }

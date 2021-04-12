@@ -14,6 +14,31 @@ namespace FlightSimulator2.viewModel
 {
     public class FeaturesGraphVM : INotifyPropertyChanged
     {
+
+
+
+        private string VM_correlatdeF;
+        public string VM_CorrelatedF
+        {
+            get { return VM_correlatdeF; }
+            set
+            {
+                VM_correlatdeF = value;
+                NotifyPropertyChanged(nameof(VM_CorrelatedF));
+            }
+        }
+
+        private string nameOfFeatureSelected;
+        public string NameOfFeatureSelected
+        {
+            get { return nameOfFeatureSelected; }
+            set { nameOfFeatureSelected = value;
+                NotifyPropertyChanged(nameof(NameOfFeatureSelected));
+                VM_CorrelatedF = model.getCorreltadFeature(value);
+            }
+        }
+
+
         private FeaturesGraphM model;
         public FeaturesGraphM Model
         {
@@ -22,7 +47,22 @@ namespace FlightSimulator2.viewModel
 
         public List<string> VM_FeaturesList
         {
-            get { return model.M_FeaturesList; }
+            get { return model.ListOfFeaturesNames; }
+            set
+            {
+                model.ListOfFeaturesNames = value;
+                NotifyPropertyChanged(nameof(VM_FeaturesList));
+            }
+        }
+        
+        public List<DataPoint> VM_CorrelatedPoints
+        {
+            get { return model.M_CorrelatedPoints; }
+            set
+            {
+                model.M_CorrelatedPoints = value;
+                NotifyPropertyChanged(nameof(VM_CorrelatedPoints));
+            }
         }
 
         public List<DataPoint> VM_Points
@@ -35,6 +75,7 @@ namespace FlightSimulator2.viewModel
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;
+
         public void NotifyPropertyChanged(string name)
         {
             if (this.PropertyChanged != null)
@@ -43,9 +84,9 @@ namespace FlightSimulator2.viewModel
             }
 
         }
-        public void featureSelected(string selectedItem)
+        public void featureSelected(int selectedIndex)
         {
-            this.model.FeatureSelected(selectedItem);
+            this.model.FeatureSelected(selectedIndex);
         }
 
         public FeaturesGraphVM(FeaturesGraphM model)

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FlightSimulator2"
         xmlns:view="clr-namespace:FlightSimulator2.view"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="2000">
+        Title="MainWindow" Height="450" Width="1500">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100*"/>
@@ -15,10 +15,10 @@
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
         </Grid.RowDefinitions>
-        <view:FeaturesGraphV x:Name="fg"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="804" Height="300" Margin="370,-329,819.6,239.4" Loaded="fg_Loaded"/>
-        <view:LoadingFiles x:Name="hk"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="780" Height="197" />
-        <view:PlayerControllBar x:Name="ds" HorizontalAlignment="Center" VerticalAlignment="Center" Width="764" Height="422" Margin="-21,72,49,-74.5" Grid.RowSpan="2" />
+        <view:FeaturesGraphV x:Name="fg"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="465" Height="241" Margin="41,44,987.6,135" Loaded="fg_Loaded" Grid.RowSpan="2"/>
+        <view:LoadingFiles x:Name="hk"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="780" Height="197" Margin="678,22,35.6,201" Grid.RowSpan="2" />
+        <view:PlayerControllBar x:Name="ds" HorizontalAlignment="Center" VerticalAlignment="Center" Width="764" Height="422" Margin="1015,68,-285.4,-70" Grid.RowSpan="2" />
         <view:SpeedRatio x:Name="sr" HorizontalAlignment="Center" VerticalAlignment="Center"   Margin="128,121,481,72" Grid.Row="1" Width="183" Height="17" />
-        <view:FlightInsturments x:Name="fs" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="291,58,-53,10" Grid.RowSpan="2" Height="352" Width="554" />
+        <view:FlightInsturments x:Name="fs" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="581,68,358.6,0" Grid.RowSpan="2" Height="352" Width="554" />
     </Grid>
 </Window>

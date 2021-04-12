@@ -21,7 +21,7 @@ namespace FlightSimulator2.model
         {
             get
             {
-                if(client == null)
+                if (client == null)
                 {
                     client = new Client();
                 }
@@ -46,7 +46,7 @@ namespace FlightSimulator2.model
         }
 
         private String ip = "127.0.0.1";
-        public String IP 
+        public String IP
         {
             get
             {
@@ -93,7 +93,7 @@ namespace FlightSimulator2.model
         /**Constractur**/
         private Client()
         {
-           this.tcpClient = new TcpClient();
+            this.tcpClient = new TcpClient();
         }
 
 
@@ -104,7 +104,7 @@ namespace FlightSimulator2.model
             //ip and port binding from view
             client_instance.tcpClient.Connect(this.IP, this.Port);
             this.stream = this.tcpClient.GetStream();
-            
+
             //build the path for reg_flight.csv
             string fileIni = "reg_flight.csv";
             string transIniFullFileName = Path.Combine(this.from_reg, fileIni);
@@ -138,7 +138,7 @@ namespace FlightSimulator2.model
             control_bar.setFlight(csv); // get the flight data
             control_bar.flightAnalysis(); // analysis the flight data.
             String line_reg = control_bar.getFlightState();
-            new Thread(delegate()
+            new Thread(delegate ()
             {
                 while (line_reg != null)
                 {
@@ -152,15 +152,16 @@ namespace FlightSimulator2.model
                     line_reg = control_bar.getFlightState();
                     // line_reg = csv.ReadLine();
                     //sleeping for 100 ms 
-                    try { 
+                    try
+                    {
                         SpeedTransport = Convert.ToInt32(100 / this.speedRatio);
                         Thread.Sleep(SpeedTransport);
                     }
-                    catch (Exception) 
+                    catch (Exception)
                     {
                         Thread.Sleep(100);
                     }
-                    
+
 
                 }
                 csv.Close();
@@ -220,9 +221,20 @@ namespace FlightSimulator2.model
 
         public string currentFlightState()
         {
-            return this.control_bar.currentState();
+            // avraham added this
+            if (this.control_bar is null) return null;
+
+            else return this.control_bar.currentState();
         }
 
+        // avraham added this
+        public long getCurrentLine()
+        {
+            // avraham added this
+            if (this.control_bar is null) return -99;
 
+            else return this.control_bar.Current_line;
+        }
     }
+
 }

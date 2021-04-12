@@ -24,22 +24,35 @@ namespace FlightSimulator2.view
     /// </summary>
     public partial class FeaturesGraphV : UserControl
     {
+
+        //private RegresionVM _regresionVM;
+        //public RegresionVM _RegresionVM
+        //{
+        //    get { return _regresionVM; }
+        //    set { _regresionVM = value; }
+        //}
+
+        
+
         private FeaturesGraphVM _viewModel;
         public FeaturesGraphVM _ViewModel
         {
-            get { return _ViewModel; }
+            get { return _viewModel; }
             set { _viewModel = value; }
         }
         public FeaturesGraphV()
         {
             InitializeComponent();
             _viewModel = new FeaturesGraphVM(new FeaturesGraphM());
+         //   _regresionVM = new _regresionVM();
             DataContext = _viewModel;
         }
 
         private void featuresListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _viewModel.featureSelected(featuresListBox.SelectedItem.ToString());
+           // _regresionVM.featureSelected(featuresListBox.SelectedItem.ToString());
+            _viewModel.featureSelected(featuresListBox.SelectedIndex);
+            _viewModel.NameOfFeatureSelected = featuresListBox.SelectedItem.ToString();
         }
     }
 }
