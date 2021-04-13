@@ -6,13 +6,19 @@
              xmlns:oxy="http://oxyplot.org/wpf"
              xmlns:local="clr-namespace:FlightSimulator2.view"
              xmlns:viewmodel="clr-namespace:FlightSimulator2.viewModel" 
-             mc:Ignorable="d" Height="600" Width="800">
+             mc:Ignorable="d">
     <Grid Width="800" Height="450">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100*"/>
+        </Grid.RowDefinitions>
+        <ListBox x:Name="featuresListBox" SelectionChanged="featuresListBox_SelectionChanged" SelectedItem="{Binding NameOfFeatureSelected , Mode=TwoWay}" ItemsSource="{Binding VM_FeaturesList}" Margin="8,24,610,95"/>
+        <TextBlock x:Name="FeatuersListBlock" Text="Featuers List"  HorizontalAlignment="Left" Grid.Row="0" Margin="63,0,0,0" />
 
-        <ListBox x:Name="featuresListBox" SelectionChanged="featuresListBox_SelectionChanged" SelectedItem="{Binding NameOfFeatureSelected , Mode=TwoWay}" ItemsSource="{Binding VM_FeaturesList}" Margin="10,62,668,207"/>
-        
-        
-        <oxy:Plot x:Name="FeaturesGraph"   Title="{Binding NameOfFeatureSelected , Mode=TwoWay}" TitleFontSize="9" Margin="153,83,444,232" >
+
+        <oxy:Plot x:Name="FeaturesGraph"   Title="{Binding NameOfFeatureSelected , Mode=TwoWay}" TitleFontSize="9" Margin="221,11,376,304" >
             <oxy:Plot.Axes>
                 <oxy:LinearAxis  Position="Left"/>
                 <oxy:LinearAxis  Position="Bottom"/>
@@ -23,7 +29,7 @@
             </oxy:Plot.Series>
         </oxy:Plot>
 
-        <oxy:Plot x:Name="CorrelationGraph" Title="{Binding  VM_CorrelatedF, Mode=TwoWay}" TitleFontSize="9" Margin="379,84,234,232" >
+        <oxy:Plot x:Name="CorrelationGraph" Title="{Binding  VM_CorrelatedF, Mode=TwoWay}" TitleFontSize="9" Margin="447,12,166,304" >
             <oxy:Plot.Axes>
                 <oxy:LinearAxis  Position="Left"/>
                 <oxy:LinearAxis  Position="Bottom"/>
@@ -32,7 +38,7 @@
                 <oxy:LineSeries  ItemsSource="{Binding VM_CorrelatedPoints , Mode=TwoWay}" />
             </oxy:Plot.Series>
         </oxy:Plot>
-    
-    
+
+
     </Grid>
 </UserControl>
