@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Threading;
 
 namespace FlightSimulator2.view
 {
@@ -24,16 +25,7 @@ namespace FlightSimulator2.view
     /// </summary>
     public partial class FeaturesGraphV : UserControl
     {
-
-        //private RegresionVM _regresionVM;
-        //public RegresionVM _RegresionVM
-        //{
-        //    get { return _regresionVM; }
-        //    set { _regresionVM = value; }
-        //}
-
-        
-
+        private static int x;
         private FeaturesGraphVM _viewModel;
         public FeaturesGraphVM _ViewModel
         {
@@ -42,17 +34,39 @@ namespace FlightSimulator2.view
         }
         public FeaturesGraphV()
         {
+            
             InitializeComponent();
-            _viewModel = new FeaturesGraphVM(new FeaturesGraphM());
-         //   _regresionVM = new _regresionVM();
+            _viewModel = new FeaturesGraphVM(new FeaturesGraphM(this));
             DataContext = _viewModel;
+
+
+            /*new Thread(delegate ()
+            {
+                while (true)
+                {
+                    Thread.Sleep(500);
+                    FeaturesGraph.InvalidatePlot(true);
+                }
+            }).Start();*/
+
         }
 
         private void featuresListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           // _regresionVM.featureSelected(featuresListBox.SelectedItem.ToString());
+
+            //FeaturesGraph.InvalidatePlot(true);
+
             _viewModel.featureSelected(featuresListBox.SelectedIndex);
             _viewModel.NameOfFeatureSelected = featuresListBox.SelectedItem.ToString();
+
+        }
+
+
+
+        public void updatePlot()
+        {
+            
+            FeaturesGraph.InvalidatePlot(true);
         }
     }
 }

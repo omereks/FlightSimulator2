@@ -10,12 +10,13 @@ using OxyPlot;
 using OxyPlot.Axes;
 using FlightSimulator2.viewModel;
 
+
 namespace FlightSimulator2.viewModel
 {
+    
+
     public class FeaturesGraphVM : INotifyPropertyChanged
     {
-
-
 
         private string VM_correlatdeF;
         public string VM_CorrelatedF
@@ -54,7 +55,18 @@ namespace FlightSimulator2.viewModel
                 NotifyPropertyChanged(nameof(VM_FeaturesList));
             }
         }
+
         
+        public double FeatureRange
+        {
+            get { return Model.M_FeatureRange; }
+            set
+            {
+                Model.M_FeatureRange = value;
+                NotifyPropertyChanged(nameof(FeatureRange));
+            }
+        }
+
         public List<DataPoint> VM_CorrelatedPoints
         {
             get { return model.M_CorrelatedPoints; }
@@ -84,8 +96,13 @@ namespace FlightSimulator2.viewModel
             }
 
         }
+
+
+
+
         public void featureSelected(int selectedIndex)
         {
+            
             this.model.FeatureSelected(selectedIndex);
         }
 

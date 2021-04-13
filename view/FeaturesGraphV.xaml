@@ -4,19 +4,28 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:oxy="http://oxyplot.org/wpf"
-             xmlns:local="clr-namespace:FlightSimulator2.view" 
+             xmlns:local="clr-namespace:FlightSimulator2.view"
              xmlns:viewmodel="clr-namespace:FlightSimulator2.viewModel" 
-             mc:Ignorable="d" Height="212.4" Width="464">
+             mc:Ignorable="d" Height="400" Width="800">
     <Grid Width="800" Height="450">
 
-        <ListBox x:Name="featuresListBox" SelectionChanged="featuresListBox_SelectionChanged" SelectedItem="{Binding NameOfFeatureSelected , Mode=TwoWay}" ItemsSource="{Binding VM_FeaturesList}" Margin="10,10,668,257"/>
-        <oxy:Plot x:Name="FeaturesGraph" Title="{Binding NameOfFeatureSelected , Mode=TwoWay}"  Margin="153,57,513,257" >
+        <ListBox x:Name="featuresListBox" SelectionChanged="featuresListBox_SelectionChanged" SelectedItem="{Binding NameOfFeatureSelected , Mode=TwoWay}" ItemsSource="{Binding VM_FeaturesList}" Margin="10,92,668,176"/>
+        <oxy:Plot x:Name="FeaturesGraph"   Title="{Binding NameOfFeatureSelected , Mode=TwoWay}" TitleFontSize="9" Margin="145,60,354,160" >
+            <oxy:Plot.Axes>
+                <oxy:LinearAxis Maximum="100" Position="Left"/>
+                <oxy:LinearAxis Maximum =" 2000" Position="Bottom"/>
+            </oxy:Plot.Axes>
             <oxy:Plot.Series>
-                <oxy:LineSeries  ItemsSource="{Binding VM_Points}"/>
+                <oxy:LineSeries ItemsSource="{Binding VM_Points , Mode=TwoWay}"/>
+
             </oxy:Plot.Series>
         </oxy:Plot>
 
-        <oxy:Plot x:Name="CorrelationGraph" Title="{Binding  VM_CorrelatedF, Mode=TwoWay}" Margin="319,57,357,0" Height="136" VerticalAlignment="Top">
+        <oxy:Plot x:Name="CorrelationGraph" Title="{Binding  VM_CorrelatedF, Mode=TwoWay}" TitleFontSize="9" Margin="468,60,37,0" Height="230" VerticalAlignment="Top">
+            <oxy:Plot.Axes>
+                <oxy:LinearAxis Maximum="100" Position="Left"/>
+                <oxy:LinearAxis Maximum =" 2000" Position="Bottom"/>
+            </oxy:Plot.Axes>
             <oxy:Plot.Series>
                 <oxy:LineSeries  ItemsSource="{Binding VM_CorrelatedPoints}" />
             </oxy:Plot.Series>

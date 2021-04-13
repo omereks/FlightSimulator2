@@ -12,6 +12,7 @@ namespace FlightSimulator2.model
     class Client : INotifyPropertyChanged
     {
 
+
         TcpClient tcpClient;
         NetworkStream stream;
         PlayerControlBarM control_bar;
@@ -230,10 +231,19 @@ namespace FlightSimulator2.model
         // avraham added this
         public long getCurrentLine()
         {
+            int counter = 0;
+            if (++counter > 1000)
+            {
+                int c = 8;
+            }
+
             // avraham added this
             if (this.control_bar is null) return -99;
 
+            
             else return this.control_bar.Current_line;
+
+            
         }
     }
 

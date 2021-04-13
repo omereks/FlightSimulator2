@@ -4,14 +4,79 @@ using System.ComponentModel;
 using OxyPlot;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Threading;
+using FlightSimulator2.view;
 
 namespace FlightSimulator2.model
 {
 
     public class FeaturesGraphM : INotifyPropertyChanged
     {
+        private FeaturesGraphV view;
+        public FeaturesGraphV View
+        {
+            get { return view; }
+            set
+            {
+                view = value;
+                NotifyPropertyChanged(nameof(View));
+            }
+        }
+
+
+        private double M_featureRange;
+        public double M_FeatureRange
+        {
+            get { return M_featureRange; }
+            set
+            {
+                M_featureRange = value;
+                NotifyPropertyChanged(nameof(M_FeatureRange));
+            }
+        }
+
+        private static int indexOfFeature = 0;
+        private static int indexOfCorrelatedFeature = 0;
+
+        public void updateFeaturesList(FeaturesGraphV view)
+        {
+            bool isConnected = true;
+            long currentLine = 0;
+            int counter = 0;
+            new Thread(delegate ()
+            {
+
+            while (isConnected)
+            {
+                Thread.Sleep(500);
+                if (Client.client_instance.currentFlightState() == null) { continue; }
+                string[] flightsInsturment;
+                flightsInsturment = Client.client_instance.currentFlightState().Split(',');
+
+
+                    if (Client.client_instance.getCurrentLine() != -99)
+                    {
+                        currentLine = Client.client_instance.getCurrentLine();
+                        
+                    }
+
+                    DataPoint feature = new DataPoint(currentLine, Math.Abs(Convert.ToDouble(flightsInsturment[indexOfFeature])));
+                    DataPoint correlated = new DataPoint(currentLine, Convert.ToDouble(flightsInsturment[indexOfCorrelatedFeature]));
+                    M_Points.Add(feature);
+                    M_CorrelatedPoints.Add(correlated);
+                    M_FeatureRange = Math.Abs(Convert.ToDouble(flightsInsturment[indexOfFeature])) * 2;
+                    Console.WriteLine(feature);
+                    view.FeaturesGraph.InvalidatePlot(true);
+                    //
+                    if (++counter > 1000)
+                    {
+                        int x = 1;
+                    }
+                    //
+                    //
+                }
+            }).Start();
+        } 
 
         private string correlatdeF;
         public string CorrelatedF
@@ -36,8 +101,6 @@ namespace FlightSimulator2.model
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-
 
         private List<DataPoint> M_correlatedPoints;
         public List<DataPoint> M_CorrelatedPoints
@@ -77,7 +140,8 @@ namespace FlightSimulator2.model
 
         public void FeatureSelected(int selectedIndex)
         {
-            M_Points = M_FeaturesLists[selectedIndex]; // change features arr to list
+            //M_Points.Clear();
+            indexOfFeature = selectedIndex; //
             string feature = listOfFeaturesNames[selectedIndex];
             int index = 0;
             string correlatedF = getCorreltadFeature(feature);
@@ -85,7 +149,7 @@ namespace FlightSimulator2.model
             {
                 if (correlatedF == listOfFeaturesNames[i]) index = i;
             }
-
+            indexOfCorrelatedFeature = index; //
             M_CorrelatedPoints = M_FeaturesLists[index];
         }
 
@@ -101,6 +165,7 @@ namespace FlightSimulator2.model
         public void initFeaturesList()
         {
             this.M_Points = new List<DataPoint>();
+            this.M_correlatedPoints = new List<DataPoint>();
 
             listOfFeaturesNames = new List<string> { "aileron", "elevator", "rudder", "flaps", "slats", "speedbrake", "throttle", "throttle", "engine-pump", "engine-pump", // flight features according to XML file
                     "electric-pump", "electric-pump", "external-power", "APU-generator", "latitude-deg", "longitude-deg", "altitude-ft", "roll-deg", "pitch-deg",
@@ -112,31 +177,6 @@ namespace FlightSimulator2.model
             };
         }
 
-
-        public void updateFeaturesList()
-        {
-            int counter = 0;
-            bool isConnected = true;
-            long currentLine = -97;
-            new Thread(delegate ()
-            {
-                while (isConnected)
-                {
-                    if (Client.client_instance.currentFlightState() == null) { continue; }
-                    string[] flightsInsturment;
-                    flightsInsturment = Client.client_instance.currentFlightState().Split(',');
-                    if (Client.client_instance.getCurrentLine() != -99) currentLine = Client.client_instance.getCurrentLine();
-                    for (int i = 0; i < listOfFeaturesNames.Count; i++)
-                    {
-                        DataPoint p = new DataPoint(currentLine, Convert.ToDouble(flightsInsturment[i]));
-                        // add every value to its list of values of every feature
-                        M_FeaturesLists[i].Add(p);
-                    }
-                    NotifyPropertyChanged(nameof(M_FeaturesLists)); // todo maybe delete
-                    counter++;
-                }
-            }).Start();
-        }
 
         public void initFeaturesDict()
         {
@@ -198,17 +238,27 @@ namespace FlightSimulator2.model
             return "aileron";
         }
 
-        public FeaturesGraphM()
+
+
+        public FeaturesGraphM(FeaturesGraphV view)
         {
+            View = view;
             initFeaturesList();
             initFeaturesDict();
-            updateFeaturesList();
+            updateFeaturesList(view);
 
-
-
-            //M_points = M_featuresDict[15];
-
-            /*this.M_points.Add(new DataPoint(3, 4));
+/*
+            this.M_correlatedPoints.Add(new DataPoint(3, 4));
+            this.M_correlatedPoints.Add(new DataPoint(4, 2));
+            this.M_correlatedPoints.Add(new DataPoint(1, 7));
+            this.M_correlatedPoints.Add(new DataPoint(6, 2));
+            this.M_correlatedPoints.Add(new DataPoint(17, 5));
+            this.M_correlatedPoints.Add(new DataPoint(8, 7));
+            this.M_correlatedPoints.Add(new DataPoint(9, 8));
+            this.M_correlatedPoints.Add(new DataPoint(10, 8));
+            this.M_correlatedPoints.Add(new DataPoint(6, 9));
+            //
+            this.M_points.Add(new DataPoint(3, 4));
             this.M_points.Add(new DataPoint(4, 3));
             this.M_points.Add(new DataPoint(5, 7));
             this.M_points.Add(new DataPoint(6, 2));
