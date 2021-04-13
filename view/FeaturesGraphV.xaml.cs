@@ -59,7 +59,7 @@ namespace FlightSimulator2.view
 
         }
 
-        // functioninvoked when item selected in the list
+        // function invoked when item selected in the list
         private void featuresListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -67,11 +67,5 @@ namespace FlightSimulator2.view
             _viewModel.NameOfFeatureSelected = featuresListBox.SelectedItem.ToString();
 
         }
-
-        /*public void updatePlot()
-        {
-            
-            FeaturesGraph.InvalidatePlot(true);
-        }*/
     }
 }
