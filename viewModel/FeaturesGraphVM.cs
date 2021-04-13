@@ -57,7 +57,7 @@ namespace FlightSimulator2.viewModel
         }
 
         
-        public double FeatureRange
+        /*public double FeatureRange
         {
             get { return Model.M_FeatureRange; }
             set
@@ -65,7 +65,7 @@ namespace FlightSimulator2.viewModel
                 Model.M_FeatureRange = value;
                 NotifyPropertyChanged(nameof(FeatureRange));
             }
-        }
+        }*/
 
         public List<DataPoint> VM_CorrelatedPoints
         {
@@ -96,8 +96,6 @@ namespace FlightSimulator2.viewModel
             }
 
         }
-
-
 
 
         public void featureSelected(int selectedIndex)

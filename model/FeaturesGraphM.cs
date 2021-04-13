@@ -10,8 +10,33 @@ using FlightSimulator2.view;
 namespace FlightSimulator2.model
 {
 
+
+
     public class FeaturesGraphM : INotifyPropertyChanged
     {
+        private static int indexOfFeature;
+        public static int IndexOfFeature
+        {
+            get { return indexOfFeature; }
+            set
+            {
+                indexOfFeature = value;
+                //NotifyPropertyChanged(nameof(IndexOfFeature));
+            }
+        }
+
+        private static int indexOfCorrelatedFeature;
+        public static int IndexOfCorrelatedFeature
+        {
+            get { return indexOfCorrelatedFeature; }
+            set
+            {
+                indexOfCorrelatedFeature = value;
+                //NotifyPropertyChanged(nameof(IndexOfFeature));
+            }
+        }
+
+
         private FeaturesGraphV view;
         public FeaturesGraphV View
         {
@@ -24,31 +49,16 @@ namespace FlightSimulator2.model
         }
 
 
-        private double M_featureRange;
-        public double M_FeatureRange
-        {
-            get { return M_featureRange; }
-            set
-            {
-                M_featureRange = value;
-                NotifyPropertyChanged(nameof(M_FeatureRange));
-            }
-        }
-
-        private static int indexOfFeature = 0;
-        private static int indexOfCorrelatedFeature = 0;
-
-        public void updateFeaturesList(FeaturesGraphV view)
+        public void updateFeaturesList()
         {
             bool isConnected = true;
             long currentLine = 0;
-            int counter = 0;
             new Thread(delegate ()
             {
 
             while (isConnected)
             {
-                Thread.Sleep(500);
+                Thread.Sleep(100);
                 if (Client.client_instance.currentFlightState() == null) { continue; }
                 string[] flightsInsturment;
                 flightsInsturment = Client.client_instance.currentFlightState().Split(',');
@@ -59,21 +69,16 @@ namespace FlightSimulator2.model
                         currentLine = Client.client_instance.getCurrentLine();
                         
                     }
-
-                    DataPoint feature = new DataPoint(currentLine, Math.Abs(Convert.ToDouble(flightsInsturment[indexOfFeature])));
+                    if (M_Points.Count != 0 && M_Points.Last().X > currentLine)
+                    {
+                        M_Points.Clear();
+                        M_CorrelatedPoints.Clear();
+                    }
+                    DataPoint feature = new DataPoint(currentLine, Convert.ToDouble(flightsInsturment[indexOfFeature]));
                     DataPoint correlated = new DataPoint(currentLine, Convert.ToDouble(flightsInsturment[indexOfCorrelatedFeature]));
+                    
                     M_Points.Add(feature);
                     M_CorrelatedPoints.Add(correlated);
-                    M_FeatureRange = Math.Abs(Convert.ToDouble(flightsInsturment[indexOfFeature])) * 2;
-                    Console.WriteLine(feature);
-                    view.FeaturesGraph.InvalidatePlot(true);
-                    //
-                    if (++counter > 1000)
-                    {
-                        int x = 1;
-                    }
-                    //
-                    //
                 }
             }).Start();
         } 
@@ -125,23 +130,13 @@ namespace FlightSimulator2.model
             }
         }
 
-        private List<List<DataPoint>> M_featuresLists; // List of Lists of features
-
-        public List<List<DataPoint>> M_FeaturesLists
-        {
-            get { return M_featuresLists; }
-            set
-            {
-                M_featuresLists = value;
-                NotifyPropertyChanged(nameof(M_FeaturesLists));
-            }
-        }
-
 
         public void FeatureSelected(int selectedIndex)
         {
-            //M_Points.Clear();
-            indexOfFeature = selectedIndex; //
+            M_Points.Clear();
+            M_CorrelatedPoints.Clear();
+
+            indexOfFeature = selectedIndex;
             string feature = listOfFeaturesNames[selectedIndex];
             int index = 0;
             string correlatedF = getCorreltadFeature(feature);
@@ -149,8 +144,7 @@ namespace FlightSimulator2.model
             {
                 if (correlatedF == listOfFeaturesNames[i]) index = i;
             }
-            indexOfCorrelatedFeature = index; //
-            M_CorrelatedPoints = M_FeaturesLists[index];
+            indexOfCorrelatedFeature = index;
         }
 
         public void NotifyPropertyChanged(string name)
@@ -176,19 +170,6 @@ namespace FlightSimulator2.model
                     "turn-indicator_indicated-turn-rate", "vertical-speed-indicator_indicated-speed-fpm", "engine_rpm"
             };
         }
-
-
-        public void initFeaturesDict()
-        {
-            M_FeaturesLists = new List<List<DataPoint>>();
-            for (int i = 0; i < listOfFeaturesNames.Count; i++)
-            {
-                // add every value to its list of values of every feature
-                M_FeaturesLists.Add(new List<DataPoint>());
-                //M_featuresDict[M_featuresList[i]] = new List<string>();
-            }
-        }
-
 
         // find correlated feature
         public string getCorreltadFeature(string feature)
@@ -239,34 +220,11 @@ namespace FlightSimulator2.model
         }
 
 
-
-        public FeaturesGraphM(FeaturesGraphV view)
+        public FeaturesGraphM()
         {
-            View = view;
+            
             initFeaturesList();
-            initFeaturesDict();
-            updateFeaturesList(view);
-
-/*
-            this.M_correlatedPoints.Add(new DataPoint(3, 4));
-            this.M_correlatedPoints.Add(new DataPoint(4, 2));
-            this.M_correlatedPoints.Add(new DataPoint(1, 7));
-            this.M_correlatedPoints.Add(new DataPoint(6, 2));
-            this.M_correlatedPoints.Add(new DataPoint(17, 5));
-            this.M_correlatedPoints.Add(new DataPoint(8, 7));
-            this.M_correlatedPoints.Add(new DataPoint(9, 8));
-            this.M_correlatedPoints.Add(new DataPoint(10, 8));
-            this.M_correlatedPoints.Add(new DataPoint(6, 9));
-            //
-            this.M_points.Add(new DataPoint(3, 4));
-            this.M_points.Add(new DataPoint(4, 3));
-            this.M_points.Add(new DataPoint(5, 7));
-            this.M_points.Add(new DataPoint(6, 2));
-            this.M_points.Add(new DataPoint(7, 5));
-            this.M_points.Add(new DataPoint(8, 7));
-            this.M_points.Add(new DataPoint(9, 3));
-            this.M_points.Add(new DataPoint(10, 8));
-            this.M_points.Add(new DataPoint(11, 9));*/
+            updateFeaturesList();
         }
     }
 }

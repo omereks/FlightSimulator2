@@ -25,7 +25,8 @@ namespace FlightSimulator2.view
     /// </summary>
     public partial class FeaturesGraphV : UserControl
     {
-        private static int x;
+       
+
         private FeaturesGraphVM _viewModel;
         public FeaturesGraphVM _ViewModel
         {
@@ -36,32 +37,33 @@ namespace FlightSimulator2.view
         {
             
             InitializeComponent();
-            _viewModel = new FeaturesGraphVM(new FeaturesGraphM(this));
+            _viewModel = new FeaturesGraphVM(new FeaturesGraphM());
             DataContext = _viewModel;
 
-
-            /*new Thread(delegate ()
+            
+            new Thread(delegate ()
             {
                 while (true)
                 {
-                    Thread.Sleep(500);
-                    FeaturesGraph.InvalidatePlot(true);
+                    Thread.Sleep(100);
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        CorrelationGraph.InvalidatePlot(true);
+                        FeaturesGraph.InvalidatePlot(true);
+                        
+                    });
                 }
-            }).Start();*/
+            }).Start();
 
         }
 
         private void featuresListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            //FeaturesGraph.InvalidatePlot(true);
-
             _viewModel.featureSelected(featuresListBox.SelectedIndex);
             _viewModel.NameOfFeatureSelected = featuresListBox.SelectedItem.ToString();
 
         }
-
-
 
         public void updatePlot()
         {

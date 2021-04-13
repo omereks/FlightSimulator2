@@ -132,6 +132,8 @@ namespace FlightSimulator2.model
                     this.Head_deg = Convert.ToDouble(flightsInsturment[headdeg_index]);
                     this.Roll = flightsInsturment[roll_index];
                     this.Yaw = flightsInsturment[yaw_index];
+
+
                     this.Pitch = flightsInsturment[pitch_index];
                 }
             }).Start();
