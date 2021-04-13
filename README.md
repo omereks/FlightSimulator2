@@ -44,8 +44,6 @@ Project is created with:
 To install this project you need to install FlightGear 2020.3.6 or older.
 in FlightGear -> settings -> Additional Settngs
 ```
---generic=socket,out,10,127.0.0.1,6400,tcp,playback_small
---telnet=socket,in,10,127.0.0.1,5402,tcp
 --generic=socket,in,10,127.0.0.1,5400,tcp,playback_small
 --fdm=null
 --httpd=8080
