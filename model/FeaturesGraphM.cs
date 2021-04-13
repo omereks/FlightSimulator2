@@ -10,10 +10,10 @@ using FlightSimulator2.view;
 namespace FlightSimulator2.model
 {
 
-
-
     public class FeaturesGraphM : INotifyPropertyChanged
     {
+
+        // index of selected feature
         private static int indexOfFeature;
         public static int IndexOfFeature
         {
@@ -21,10 +21,9 @@ namespace FlightSimulator2.model
             set
             {
                 indexOfFeature = value;
-                //NotifyPropertyChanged(nameof(IndexOfFeature));
             }
         }
-
+        // index of correlated feature
         private static int indexOfCorrelatedFeature;
         public static int IndexOfCorrelatedFeature
         {
@@ -32,23 +31,11 @@ namespace FlightSimulator2.model
             set
             {
                 indexOfCorrelatedFeature = value;
-                //NotifyPropertyChanged(nameof(IndexOfFeature));
             }
         }
 
-
-        private FeaturesGraphV view;
-        public FeaturesGraphV View
-        {
-            get { return view; }
-            set
-            {
-                view = value;
-                NotifyPropertyChanged(nameof(View));
-            }
-        }
-
-
+        // this function updates the lists of points
+        // using thread
         public void updateFeaturesList()
         {
             bool isConnected = true;
@@ -66,11 +53,14 @@ namespace FlightSimulator2.model
 
                     if (Client.client_instance.getCurrentLine() != -99)
                     {
+                        // get current line number
                         currentLine = Client.client_instance.getCurrentLine();
                         
                     }
+                    // if user takes the control bar reverse
                     if (M_Points.Count != 0 && M_Points.Last().X > currentLine)
                     {
+                        // clear the lists
                         M_Points.Clear();
                         M_CorrelatedPoints.Clear();
                     }
@@ -83,6 +73,7 @@ namespace FlightSimulator2.model
             }).Start();
         } 
 
+        // name of correlated feature
         private string correlatdeF;
         public string CorrelatedF
         {
@@ -94,6 +85,7 @@ namespace FlightSimulator2.model
             }
         }
 
+        // list of all the feaures names by order of given csv file 
         private List<string> listOfFeaturesNames;
         public List<string> ListOfFeaturesNames
         {
@@ -107,6 +99,7 @@ namespace FlightSimulator2.model
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        // list of correlated points
         private List<DataPoint> M_correlatedPoints;
         public List<DataPoint> M_CorrelatedPoints
         {
@@ -118,7 +111,7 @@ namespace FlightSimulator2.model
             }
         }
 
-
+        // list of points
         private List<DataPoint> M_points;
         public List<DataPoint> M_Points
         {
@@ -130,7 +123,8 @@ namespace FlightSimulator2.model
             }
         }
 
-
+        // function handles the event when user clicks 
+        // on item in the list
         public void FeatureSelected(int selectedIndex)
         {
             M_Points.Clear();
@@ -140,6 +134,7 @@ namespace FlightSimulator2.model
             string feature = listOfFeaturesNames[selectedIndex];
             int index = 0;
             string correlatedF = getCorreltadFeature(feature);
+            // find the index of the feature
             for (int i = 0; i < listOfFeaturesNames.Count; i++)
             {
                 if (correlatedF == listOfFeaturesNames[i]) index = i;
@@ -171,7 +166,7 @@ namespace FlightSimulator2.model
             };
         }
 
-        // find correlated feature
+        // find correlated feature according to Learn Normal 
         public string getCorreltadFeature(string feature)
         {
             if (feature == "aileron") return "slip-skid-ball_indicated-slip-skid";
@@ -222,7 +217,6 @@ namespace FlightSimulator2.model
 
         public FeaturesGraphM()
         {
-            
             initFeaturesList();
             updateFeaturesList();
         }

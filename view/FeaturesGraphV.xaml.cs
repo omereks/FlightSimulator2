@@ -33,6 +33,8 @@ namespace FlightSimulator2.view
             get { return _viewModel; }
             set { _viewModel = value; }
         }
+
+
         public FeaturesGraphV()
         {
             
@@ -40,7 +42,7 @@ namespace FlightSimulator2.view
             _viewModel = new FeaturesGraphVM(new FeaturesGraphM());
             DataContext = _viewModel;
 
-            
+            // thread that make the plots updated using thread
             new Thread(delegate ()
             {
                 while (true)
@@ -57,6 +59,7 @@ namespace FlightSimulator2.view
 
         }
 
+        // functioninvoked when item selected in the list
         private void featuresListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -65,10 +68,10 @@ namespace FlightSimulator2.view
 
         }
 
-        public void updatePlot()
+        /*public void updatePlot()
         {
             
             FeaturesGraph.InvalidatePlot(true);
-        }
+        }*/
     }
 }

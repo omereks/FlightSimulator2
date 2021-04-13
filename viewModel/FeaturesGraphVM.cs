@@ -17,7 +17,7 @@ namespace FlightSimulator2.viewModel
 
     public class FeaturesGraphVM : INotifyPropertyChanged
     {
-
+        // name of correlated feature
         private string VM_correlatdeF;
         public string VM_CorrelatedF
         {
@@ -29,6 +29,7 @@ namespace FlightSimulator2.viewModel
             }
         }
 
+        // name of selected feature
         private string nameOfFeatureSelected;
         public string NameOfFeatureSelected
         {
@@ -39,7 +40,7 @@ namespace FlightSimulator2.viewModel
             }
         }
 
-
+        // model object
         private FeaturesGraphM model;
         public FeaturesGraphM Model
         {
@@ -56,16 +57,6 @@ namespace FlightSimulator2.viewModel
             }
         }
 
-        
-        /*public double FeatureRange
-        {
-            get { return Model.M_FeatureRange; }
-            set
-            {
-                Model.M_FeatureRange = value;
-                NotifyPropertyChanged(nameof(FeatureRange));
-            }
-        }*/
 
         public List<DataPoint> VM_CorrelatedPoints
         {
