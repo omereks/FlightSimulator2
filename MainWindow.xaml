@@ -6,17 +6,17 @@
         xmlns:local="clr-namespace:FlightSimulator2"
         xmlns:view="clr-namespace:FlightSimulator2.view"
         mc:Ignorable="d"
-        Title="Flight Simulator" Height="800" Width="1000">
+        Title="MainWindow" Height="650" Width="1000">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="350*"/>
-            <RowDefinition Height="450*"/>
-            <RowDefinition Height="100*"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="400"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
-        <view:LoadingFiles Grid.Row="0" x:Name="hk"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        <view:LoadingFiles Grid.Row="0" Height="150" x:Name="hk"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
         <view:FeaturesGraphV Grid.Row="1" Grid.RowSpan="2" x:Name="fg"  HorizontalAlignment="Left" Margin="15,15,0,0" VerticalAlignment="Top" Loaded="fg_Loaded"/>
         <view:FlightInsturments Grid.Row="1" x:Name="fs" HorizontalAlignment="Right" Margin="0,15,15,0" VerticalAlignment="Top" />
         <view:PlayerControllBar Grid.Row="2" x:Name="ds" HorizontalAlignment="Center" VerticalAlignment="Center"   />
