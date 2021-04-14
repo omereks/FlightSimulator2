@@ -76,6 +76,7 @@
     <Compile Include="model\FeaturesGraphM.cs" />
     <Compile Include="model\FlightInsturmentsM.cs" />
     <Compile Include="model\JoystickM.cs" />
+    <Compile Include="model\Line.cs" />
     <Compile Include="model\LoadingFilesM.cs" />
     <Compile Include="model\PlayerControlBarM.cs" />
     <Compile Include="model\RegresionLineM.cs" />
