@@ -20,12 +20,14 @@ This project was build with MVVM Methodology.
 * Server-Client connection with FlightGear
 * UI for Copy Playback_small.Xml File and Connect to FlightGear with csv file.
 ![](https://i2.paste.pics/C6W96.png?trs=475c231022680624d5590487b5db54382c3c1bd4cf6636753bc4d2d0f400a67e)
-* Scrolling through time with the time scroller - you can jump whenever you want and you can change the speed ratio, play and pause the Simulator.
-![](https://i2.paste.pics/C6WAK.png?trs=475c231022680624d5590487b5db54382c3c1bd4cf6636753bc4d2d0f400a67e)
+* Scrolling through time with the time scroller - you can jump whenever you want and you can change the speed ratio, see the current Time, play and pause the Simulator.
+![](https://i2.paste.pics/C727K.png?trs=475c231022680624d5590487b5db54382c3c1bd4cf6636753bc4d2d0f400a67e)
 * you can see the joystick of the pilot
 
-* Visualing data of the plane:
+* Visualing data of the plane and Stick:
 ![](https://i2.paste.pics/C6WBC.png?trs=475c231022680624d5590487b5db54382c3c1bd4cf6636753bc4d2d0f400a67e)
+![](https://i2.paste.pics/C72BV.png?trs=475c231022680624d5590487b5db54382c3c1bd4cf6636753bc4d2d0f400a67e)
+
 
 	
   
