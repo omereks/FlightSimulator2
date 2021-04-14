@@ -33,8 +33,7 @@ This project was build with MVVM Methodology.
 * Visual Graphs: you can see 3 Graphs: Feature Graph, Coralate Graph and Regeression Graph
 ![](https://i2.paste.pics/C782W.png)
 * Upload Dll for Research your Flight and find some Errors
-* [](https://i2.paste.pics/C783D.png)
-
+![](https://i2.paste.pics/C783D.png)
 	
   
   
