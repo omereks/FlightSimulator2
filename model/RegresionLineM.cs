@@ -23,10 +23,10 @@ namespace FlightSimulator2.model
        // private DataPoint lineP1, lineP2;
         private List<DataPoint> line;
 
-        public RegresionLineM(FeaturesGraphM graphM)
+        /*public RegresionLineM(FeaturesGraphM graphM)
         {
 
-        }
+        }*/
         public RegresionLineM()
         {
             graphM = new FeaturesGraphM();
@@ -35,8 +35,8 @@ namespace FlightSimulator2.model
                 continue;
             }*/
             
-            x_feature_list = graphM.M_Points;
-            y_feature_list = graphM.M_CorrelatedPoints;
+           /* x_feature_list = graphM.M_Points;
+            y_feature_list = graphM.M_CorrelatedPoints;*/
             FindRegLine();
             findLineValue();
 
@@ -87,9 +87,16 @@ namespace FlightSimulator2.model
         {
             new Thread(delegate()
             {
-            while(graphM.M_Points.Count() != 0) { 
-            this.line.Add(new DataPoint(graphM.M_Points.First().Y, this.reg_line.f(graphM.M_Points.First().Y)));
-            this.line.Add(new DataPoint(graphM.M_CorrelatedPoints.Last().Y, this.reg_line.f(graphM.M_CorrelatedPoints.Last().Y)));
+            while(graphM.M_Points.Count() != 0) {
+                    Thread.Sleep(100);
+                    this.line.Add(new DataPoint(graphM.M_Points.First().Y, this.reg_line.f(graphM.M_Points.First().Y)));
+                    this.line.Add(new DataPoint(graphM.M_CorrelatedPoints.Last().Y, this.reg_line.f(graphM.M_CorrelatedPoints.Last().Y)));
+                    Console.WriteLine("P:");
+                    Console.WriteLine(graphM.M_CorrelatedPoints.First().X);
+                    Console.WriteLine(this.reg_line.f(graphM.M_Points.First().Y));
+                    Console.WriteLine(graphM.M_CorrelatedPoints.Last().X);
+                    Console.WriteLine(this.reg_line.f(graphM.M_Points.Last().Y));
+
                 }
             }).Start();
         }
@@ -124,9 +131,14 @@ namespace FlightSimulator2.model
 
         public void FindRegLine()
         {
-            this.reg_line = new Line();
-            this.reg_line.linear_reg(x_feature_list, y_feature_list, x_feature_list.Count()); 
-
+            new Thread(delegate ()
+            {
+                while (graphM.M_Points.Count() != 0)
+                {
+                    this.reg_line = new Line();
+                    this.reg_line.linear_reg(graphM.M_Points, graphM.M_CorrelatedPoints, graphM.M_Points.Count());
+                }
+            }).Start();
         }
         public List<DataPoint> X_feature_list
         {

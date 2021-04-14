@@ -57,6 +57,15 @@ namespace FlightSimulator2.viewModel
             }
         }
 
+        public List<DataPoint> VM_LineReg
+        {
+            get { return model.M_LineReg; }
+            set
+            {
+                model.M_LineReg = value;
+                NotifyPropertyChanged(nameof(VM_LineReg));
+            }
+        }
 
         public List<DataPoint> VM_CorrelatedPoints
         {

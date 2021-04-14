@@ -40,6 +40,7 @@ namespace FlightSimulator2.model
         {
             bool isConnected = true;
             long currentLine = 0;
+            Line reg_line = new Line();
             new Thread(delegate ()
             {
 
@@ -50,6 +51,7 @@ namespace FlightSimulator2.model
                 string[] flightsInsturment;
                 flightsInsturment = Client.client_instance.currentFlightState().Split(',');
 
+                    
 
                     if (Client.client_instance.getCurrentLine() != -99)
                     {
@@ -63,12 +65,25 @@ namespace FlightSimulator2.model
                         // clear the lists
                         M_Points.Clear();
                         M_CorrelatedPoints.Clear();
+                        M_LineReg.Clear();
                     }
                     DataPoint feature = new DataPoint(currentLine, Convert.ToDouble(flightsInsturment[indexOfFeature]));
                     DataPoint correlated = new DataPoint(currentLine, Convert.ToDouble(flightsInsturment[indexOfCorrelatedFeature]));
-                    
+
                     M_Points.Add(feature);
                     M_CorrelatedPoints.Add(correlated);
+
+                    if (M_Points.Count > 2)
+                    {
+                        M_LineReg.Clear();
+                        reg_line.linear_regg(M_Points, M_CorrelatedPoints, M_Points.Count());
+                        
+                        Console.WriteLine(M_Points[0].X + " , " + reg_line.f(M_Points[0].Y));
+                        M_LineReg.Add(new DataPoint(M_Points[0].X, reg_line.f(M_Points[0].Y)));
+                        Console.WriteLine(currentLine + " , " + reg_line.f(M_CorrelatedPoints[M_CorrelatedPoints.Count - 1].Y));
+                        M_LineReg.Add(new DataPoint(currentLine,  reg_line.f(M_CorrelatedPoints[M_CorrelatedPoints.Count - 1].Y)));
+                    }
+                   // M_LineReg.Add(feature);
                 }
             }).Start();
         } 
@@ -108,6 +123,18 @@ namespace FlightSimulator2.model
             {
                 M_correlatedPoints = value;
                 NotifyPropertyChanged(nameof(M_CorrelatedPoints));
+            }
+        }
+
+        // list of points Reg
+        private List<DataPoint> M_lineReg;
+        public List<DataPoint> M_LineReg
+        {
+            get { return M_lineReg; }
+            set
+            {
+                M_lineReg = value;
+                NotifyPropertyChanged(nameof(M_LineReg));
             }
         }
 
@@ -155,6 +182,7 @@ namespace FlightSimulator2.model
         {
             this.M_Points = new List<DataPoint>();
             this.M_correlatedPoints = new List<DataPoint>();
+            this.M_LineReg = new List<DataPoint>();
 
             listOfFeaturesNames = new List<string> { "aileron", "elevator", "rudder", "flaps", "slats", "speedbrake", "throttle", "throttle", "engine-pump", "engine-pump", // flight features according to XML file
                     "electric-pump", "electric-pump", "external-power", "APU-generator", "latitude-deg", "longitude-deg", "altitude-ft", "roll-deg", "pitch-deg",

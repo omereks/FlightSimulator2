@@ -49,7 +49,7 @@ namespace FlightSimulator2.model
             double var1, sumPow = 0, fi = 0;
             for (int i = 0; i < size; i++)
             {
-                sumPow += Math.Pow(x[i].Y, 2);
+                sumPow += Math.Pow(x.ElementAt(i).Y, 2);
             }
             fi = Avg(x, size);
             if (size * sumPow == 0)
@@ -84,6 +84,12 @@ namespace FlightSimulator2.model
             a = Cov(x, y, size) / Var(x, size);
             b = Avg(y, size) - a * Avg(x, size);
             return new Line(a, b);
+        }
+
+        public void linear_regg(List<DataPoint> x, List<DataPoint> y, int size)
+        {
+            this.a = Cov(x, y, size) / Var(x, size);
+            this.b = Avg(y, size) - a * Avg(x, size);
         }
 
         /*Line linear_reg(List<DataPoint> points, int size)

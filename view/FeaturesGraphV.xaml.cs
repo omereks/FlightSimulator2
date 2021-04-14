@@ -52,7 +52,8 @@ namespace FlightSimulator2.view
                     {
                         CorrelationGraph.InvalidatePlot(true);
                         FeaturesGraph.InvalidatePlot(true);
-                        
+                        RegresionGraph.InvalidatePlot(true);
+
                     });
                 }
             }).Start();

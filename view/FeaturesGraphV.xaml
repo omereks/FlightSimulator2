@@ -39,6 +39,16 @@
             </oxy:Plot.Series>
         </oxy:Plot>
 
+        <oxy:Plot x:Name="RegresionGraph" Title="RegresionGraph" TitleFontSize="9" Margin="221,147,166,169" >
+            <oxy:Plot.Axes>
+                <oxy:LinearAxis  Position="Left"/>
+                <oxy:LinearAxis  Position="Bottom"/>
+            </oxy:Plot.Axes>
+            <oxy:Plot.Series>
+                <oxy:LineSeries  ItemsSource="{Binding VM_LineReg , Mode=TwoWay}" />
+            </oxy:Plot.Series>
+        </oxy:Plot>
+
 
     </Grid>
 </UserControl>

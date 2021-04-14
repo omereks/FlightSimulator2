@@ -21,8 +21,8 @@ namespace FlightSimulator2.viewModel
 
         public RegresionLineVM(RegresionLineM new_reg_line)
         {
-            this.rl = new_reg_line;
-            this.rl.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e) {
+            rl = new_reg_line;
+            rl.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e) {
                 NotifyPropertyChanged("VM_" + e.PropertyName);
             };
         }
@@ -31,12 +31,12 @@ namespace FlightSimulator2.viewModel
         {
             get
             {
-                return this.rl.Points;
+                return rl.Points;
             }
 
             set
             {
-                this.rl.Points = value;
+                rl.Points = value;
                 NotifyPropertyChanged("VM_Points");
             }
         }
@@ -45,13 +45,13 @@ namespace FlightSimulator2.viewModel
         {
             get
             {
-                return this.rl.LineByPoints;
+                return rl.LineByPoints;
             }
             
             set
             {
-                this.rl.LineByPoints = value;
-                NotifyPropertyChanged(nameof(VM_LineByPoints));
+                rl.LineByPoints = value;
+                NotifyPropertyChanged("VM_LineByPoints");
             }
         }
 
@@ -59,12 +59,12 @@ namespace FlightSimulator2.viewModel
         {
             get
             {
-                return this.rl.Reg_line;
+                return rl.Reg_line;
             }
 
             set
             {
-                this.rl.Reg_line = value;
+                rl.Reg_line = value;
                 NotifyPropertyChanged("VM_Reg_line");
             }
         }
@@ -77,12 +77,12 @@ namespace FlightSimulator2.viewModel
         {
             get
             {
-                return this.rl.X_feature_list;
+                return rl.X_feature_list;
             }
 
             set
             {
-                this.rl.X_feature_list = value;
+                rl.X_feature_list = value;
                 NotifyPropertyChanged("VM_X_feature_list");
             }
         }
@@ -91,12 +91,12 @@ namespace FlightSimulator2.viewModel
         {
             get
             {
-                return this.rl.Y_feature_list;
+                return rl.Y_feature_list;
             }
 
             set
             {
-                this.rl.Y_feature_list = value;
+                rl.Y_feature_list = value;
                 NotifyPropertyChanged("VM_Y_feature_list");
             }
         }
@@ -104,12 +104,12 @@ namespace FlightSimulator2.viewModel
         {
             get
             {
-                return this.rl.X_feature;
+                return rl.X_feature;
             }
 
             set
             {
-                this.rl.X_feature = value;
+                rl.X_feature = value;
                 NotifyPropertyChanged("VM_X_feature");
             }
         }
@@ -118,12 +118,12 @@ namespace FlightSimulator2.viewModel
         {
             get
             {
-                return this.rl.Y_feature;
+                return rl.Y_feature;
             }
 
             set
             {
-                this.rl.Y_feature = value;
+                rl.Y_feature = value;
                 NotifyPropertyChanged("VM_Y_feature");
             }
         }

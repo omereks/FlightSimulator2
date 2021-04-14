@@ -27,11 +27,11 @@ namespace FlightSimulator2.view
         private RegresionLineVM regLineVM;
  
 
-        public RegresionLine RegLineVM
+  /*      public RegresionLine RegLineVM
         {
             get
             {
-                return this.RegLineVM; 
+                return this.regLineVM; 
             }
 
             set
@@ -39,7 +39,7 @@ namespace FlightSimulator2.view
                 this.RegLineVM = value;
             }
         }
-
+*/
         public RegresionLine()
         {
             InitializeComponent();
@@ -53,7 +53,7 @@ namespace FlightSimulator2.view
                     Thread.Sleep(100);
                     this.Dispatcher.Invoke(() =>
                     {
-                        RegresiobLine.InvalidatePlot(true);
+                        RegresionLineGraph.InvalidatePlot(true);
                         /*CorrelationGraph.InvalidatePlot(true);
                         FeaturesGraph.InvalidatePlot(true);*/
 
