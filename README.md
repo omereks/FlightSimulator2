@@ -31,7 +31,7 @@ This project was built with MVVM Methodology on .NET Framework.
 * Scrolling through time with the time scroller - you can jump whenever you want and you can change the speed ratio, see the current Time, play and pause the Simulator.
 ![](https://i2.paste.pics/C727K.png?trs=475c231022680624d5590487b5db54382c3c1bd4cf6636753bc4d2d0f400a67e)
 * You can see the joystick of the pilot, also you can see the throttle and rudder position in every second.
-* You can see a with updated while flying Heading Deg compass.
+* You can see an updating Heading Deg compass.
 * Visualing data of the plane and Stick:
 ![](https://i2.paste.pics/C6WBC.png?trs=475c231022680624d5590487b5db54382c3c1bd4cf6636753bc4d2d0f400a67e)
 ![](https://i2.paste.pics/C72BV.png?trs=475c231022680624d5590487b5db54382c3c1bd4cf6636753bc4d2d0f400a67e)
