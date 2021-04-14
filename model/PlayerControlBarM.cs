@@ -20,6 +20,31 @@ namespace FlightSimulator2.model
         Dictionary<long, string> flight_state; // all the lines of the flight wil be bind to specifiec time.
         private string current_time_string; // the current time in string
 
+        private string max_Time;
+        public string Max_Time
+        {
+            get
+            {
+                return max_Time;
+            }
+            set
+            {
+                this.max_Time = value;
+                NotifyPropertyChanged("Max_Time");
+            }
+        }
+        public string Current_time_string
+         {
+            get
+            {
+                return current_time_string;
+            }
+            set
+            {
+                this.current_time_string = value;
+                NotifyPropertyChanged("Current_time_string");
+    }
+}
         long current_line; // the current line we send to flight gear.
         public long Current_line // current line property
         {
@@ -90,7 +115,8 @@ namespace FlightSimulator2.model
             // for adding max time (will updater later)
             max_scroll = (long)(number_of_rows / (suspend_time * 0.001));
             TimeSpan time = TimeSpan.FromSeconds(max_scroll);
-     
+            string displayTime = time.ToString(@"hh\:mm\:ss");
+            Max_Time = displayTime;
         }
 
         /*
@@ -103,6 +129,9 @@ namespace FlightSimulator2.model
                 if (play_or_pause)
                 {
                     ++Current_line;
+                    long n = (long)(Current_line / (suspend_time * 0.001));
+                    TimeSpan t = TimeSpan.FromSeconds(n);
+                    this.Current_time_string = t.ToString(@"hh\:mm\:ss");
                     return flight_state[current_line - 1];
                 }
                 return flight_state[current_line]; // if the pause button pressed then we send the same line over and over.
@@ -126,7 +155,10 @@ namespace FlightSimulator2.model
             if (!this.flight_state.ContainsKey(current_line)) return null;
             return this.flight_state[current_line];
         }
-
+        public long rowsNumber()
+        {
+            return this.Number_of_rows;
+        }
         
         // INotifyPropertyChanged implementation.
         // public event PropertyChangedEventHandler Property;

@@ -7,6 +7,7 @@ using System.Net.Sockets;
 using System.IO;
 using System.Threading;
 using System.ComponentModel;
+using System.Xml;
 namespace FlightSimulator2.model
 {
     class Client : INotifyPropertyChanged
@@ -16,6 +17,7 @@ namespace FlightSimulator2.model
         TcpClient tcpClient;
         NetworkStream stream;
         PlayerControlBarM control_bar;
+        List<string> xml_place;
         // singelton! 
         private static Client client = new Client();
         public static Client client_instance
@@ -88,7 +90,19 @@ namespace FlightSimulator2.model
                 NotifyPropertyChangedtify("SpeedRatio");
             }
         }
-
+        private string xml_File = null;
+        public string Xml_file
+        {
+            get
+            {
+                return xml_File;
+            }
+            set
+            {
+                xml_File = value;
+                NotifyPropertyChangedtify("Xml_file");
+            }
+        }
 
 
         /**Constractur**/
@@ -109,7 +123,6 @@ namespace FlightSimulator2.model
             //build the path for reg_flight.csv
             string fileIni = "reg_flight.csv";
             string transIniFullFileName = Path.Combine(this.from_reg, fileIni);
-
             //start sending CSV to FG
             client.SendCSV(transIniFullFileName);
         }
@@ -244,6 +257,31 @@ namespace FlightSimulator2.model
             else return this.control_bar.Current_line;
 
             
+        }
+        public void xmlVectorCreate()
+        {
+                xml_place = new List<string>();
+                XmlDocument doc = new XmlDocument();
+                doc.Load(this.xml_File + "/playback_small.xml");
+
+                //Display all the names titles.
+                XmlNodeList elemList = doc.GetElementsByTagName("name");
+                for (int i = 0; i < elemList.Count; i++)
+                {
+                     xml_place.Add(elemList[i].InnerXml);
+                    //  Console.WriteLine(elemList[i].InnerXml); test
+               
+                 }
+             
+        }
+        public string xmlPlace(int i)
+        {
+            if (i >= xml_place.Count()) return null;
+            return xml_place.ElementAt(i);
+        }
+        public long numberOfRows()
+        {
+            return this.control_bar.rowsNumber();
         }
     }
 

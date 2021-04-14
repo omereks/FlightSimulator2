@@ -19,6 +19,7 @@
         <view:LoadingFiles x:Name="hk"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="664" Height="197" Margin="810,13,19.6,0.4" />
         <view:PlayerControllBar x:Name="ds" HorizontalAlignment="Center" VerticalAlignment="Center" Width="764" Height="422" Margin="112,68,617.6,-70" Grid.RowSpan="2" />
         <view:SpeedRatio x:Name="sr" HorizontalAlignment="Center" VerticalAlignment="Center"   Margin="160,98.6,1150.6,94" Grid.Row="1" Width="183" Height="17" />
-        <view:FlightInsturments x:Name="fs" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="99,-5,921.6,94" Grid.RowSpan="2" Height="331" Width="473" />
+        <view:FlightInsturments x:Name="fs" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="98,-5,897,81" Grid.RowSpan="2" Height="344" Width="497" />
+        <view:AnomalyDetectorDll x:Name="dll" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="665,68,19,-99" Grid.RowSpan="2" Height="451" Width="808"/>
     </Grid>
 </Window>

@@ -45,6 +45,8 @@ namespace FlightSimulator2.view
         private void CopyXML_Click(object sender, RoutedEventArgs e)
         {
             loadingFilesViewModel.copyXML();
+            loadingFilesViewModel.client.Xml_file = loadingFilesViewModel.VM_from_playback;
+            loadingFilesViewModel.client.xmlVectorCreate();
         }
         private void ConnectFG_Click(object sender, RoutedEventArgs e)
         {

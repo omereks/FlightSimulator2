@@ -61,6 +61,28 @@ namespace FlightSimulator2.viewModel
                 controlBar.Play_or_Pause = value;
             }
         }
+        public string VM_Max_Time
+        {
+            get
+            {
+                return this.controlBar.Max_Time;
+            }
+            set
+            {
+                controlBar.Max_Time = value;
+            }
+        }
+        public string VM_Current_time_string
+        {
+            get
+            {
+                return this.controlBar.Current_time_string;
+            }
+            set
+            {
+                controlBar.Current_time_string = value;
+            }
+        }
 
     }
 }
