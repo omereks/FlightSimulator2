@@ -24,8 +24,10 @@ This project was build with MVVM Methodology.
 ![](https://i2.paste.pics/C727K.png?trs=475c231022680624d5590487b5db54382c3c1bd4cf6636753bc4d2d0f400a67e)
 * you can see the joystick of the pilot
 
-* Visualing data of the plane:
+* Visualing data of the plane and Stick:
 ![](https://i2.paste.pics/C6WBC.png?trs=475c231022680624d5590487b5db54382c3c1bd4cf6636753bc4d2d0f400a67e)
+![](https://i2.paste.pics/C72BV.png?trs=475c231022680624d5590487b5db54382c3c1bd4cf6636753bc4d2d0f400a67e)
+
 
 	
   
