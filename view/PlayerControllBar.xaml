@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:view="clr-namespace:FlightSimulator2.view"
              xmlns:local="clr-namespace:FlightSimulator2.view"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             >
     <Grid>
         <Slider Minimum="0" Maximum="{Binding VM_Number_of_rows}" Value="{Binding VM_Current_line, Mode=TwoWay}"  HorizontalAlignment="Left" Margin="85,282,0,0" VerticalAlignment="Top" Width="336" Background="Black"/>
         <Button x:Name="playOrPause" Content="Pause" HorizontalAlignment="Left" Margin="207,305,0,0" VerticalAlignment="Top" Width="44" Height="33" Click="Play_Click"/>
