@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:FlightSimulator2.view"
              mc:Ignorable="d" 
              >
-    <Grid Margin="238,81,120,0">
-        <Canvas  x:Name="Base" Margin="0" Width="68" Height="68">
+    <Grid Height="144" Width="164">
+        <Canvas  x:Name="Base" Margin="74,29,22,47" Width="68" Height="68">
             <Ellipse HorizontalAlignment="Left" Height="68" VerticalAlignment="Top" Width="68">
                 <Ellipse.Fill>
                     <RadialGradientBrush>
@@ -115,11 +115,11 @@
                 <Path Data="M9.74935,11.916 L13.084,15.166 L12.1668,16.833 L11.3333,18.583 L10.4999,20.416 L9.24961,20.833 L6.99967,20.583 L6.75,18.333 L7.66697,15.333 L8.75037,12.916 z M3.6672,9.74999 L7.084,10.083 L5.75037,12.25 L4.66704,14 L4.33365,16.583 L4.25036,18.75 L4.41695,20.5 L0,20.166 L0.16699,16.916 L1.16693,13.833 L2.50016,11.583 z M18.1671,6.33301 L21.167,6.33301 L21.667,8.5 L20.75,9.75 L18.5841,10.833 L15.8337,13 L12.584,8.83301 L15.2502,7 z M20.917,0 L20.917,3.16601 L18.1674,2.99999 L15.8337,3.583 L13.5837,4.833 L11.3337,5.99999 L10.5003,6.416 L8.584,3.833 L11.0842,2.41601 L13.3341,0.833006 L16.417,0.166016 z" Fill="#99EEEEEE" HorizontalAlignment="Left" Height="4.1666" Stretch="Fill" UseLayoutRounding="False" VerticalAlignment="Top" Width="4.3334" Canvas.Left="3.6332" Canvas.Top="3.1834" />
 
                 <Canvas.RenderTransform>
-                    <TranslateTransform x:Name="knobPosition" X="{Binding Elevator, Mode=TwoWay}" Y="{Binding Aileron, Mode=TwoWay}"/>
+                    <TranslateTransform x:Name="knobPosition" X="{Binding VM_Elevator, Mode=TwoWay}" Y="{Binding VM_Aileron, Mode=TwoWay}"/>
                 </Canvas.RenderTransform>
                 <Canvas.Resources>
 
-                   <Storyboard x:Key="CenterKnob" Name="centerKnob" Completed="centerKnob_Completed">
+                    <Storyboard x:Key="CenterKnob" Name="centerKnob" Completed="centerKnob_Completed">
 
                         <DoubleAnimation Storyboard.TargetName="knobPosition"
                              Storyboard.TargetProperty="X" To="0" Duration="0:0:0.2">
@@ -136,9 +136,7 @@
                 </Canvas.Resources>
             </Canvas>
         </Canvas>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Margin="-426,47,0,0"/>
-        <TextBlock x:Name="t" HorizontalAlignment="Left" Height="30" Margin="361,133,0,0" TextWrapping="Wrap" Text="{Binding ElementName=throttle, StringFormat=0.0# ,Path=Value}" VerticalAlignment="Top" Width="36" Background="Red"/>
-        <Slider x:Name="throttle" Minimum="0" Maximum="1" Value="{Binding VM_throttle, Mode=OneWay}" HorizontalAlignment="Left" Height="42" Margin="59,163,0,0" VerticalAlignment="Top" Width="116" RenderTransformOrigin="0.5,0.5" ValueChanged="slider1_ValueChanged">
+        <Slider x:Name="throttle" Minimum="0" Maximum="1" Value="{Binding VM_throttle, Mode=TwoWay}" HorizontalAlignment="Left" Height="30" Margin="1,50,0,0" VerticalAlignment="Top" Width="76" RenderTransformOrigin="0.5,0.5" ValueChanged="slider1_ValueChanged">
             <Slider.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -148,7 +146,18 @@
                 </TransformGroup>
             </Slider.RenderTransform>
         </Slider>
-        <Slider x:Name="rudder" Minimum="-1" Maximum="1" Value="{Binding VM_rudder, Mode=OneWay}" HorizontalAlignment="Left" Height="28" Margin="132,246,0,0" VerticalAlignment="Top" Width="184" ValueChanged="slider2_ValueChanged"/>
+        <Slider x:Name="rudder" Minimum="-1" Maximum="1" Value="{Binding VM_rudder, Mode=TwoWay}" HorizontalAlignment="Left" Height="28" Margin="59,104,0,0" VerticalAlignment="Top" Width="98" ValueChanged="slider2_ValueChanged"/>
+        <TextBlock x:Name="textBlockT" HorizontalAlignment="Left" Margin="-5,60,0,0" Text="Throttle" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock x:Name="textBlockR" HorizontalAlignment="Left" Margin="91,124,0,0" Text="Rudde" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
     </Grid>
 </UserControl>

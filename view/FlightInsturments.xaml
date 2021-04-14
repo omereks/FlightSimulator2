@@ -64,7 +64,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Rectangle  HorizontalAlignment="Left" Height="28" Margin="44,105,0,0" Stroke="Black" VerticalAlignment="Top" Width="166"/>
+        <Rectangle  HorizontalAlignment="Left" Height="28" Margin="44,105,0,0" Stroke="Black" VerticalAlignment="Top" Width="192"/>
         <TextBlock HorizontalAlignment="Left" Margin="53,105,0,0" TextWrapping="Wrap" Text="Pitch" VerticalAlignment="Top" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" Margin="117,105,0,0" TextWrapping="Wrap" Text="Roll" VerticalAlignment="Top" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" Margin="180,105,0,0" TextWrapping="Wrap" Text="Yaw" VerticalAlignment="Top" FontWeight="Bold"/>

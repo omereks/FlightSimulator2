@@ -22,7 +22,7 @@ namespace FlightSimulator2.model
             this.disconnect = false;
             this.aileron_idx = 0;
             this.elevator_idx = 1;
-            this.throttle_idx = 7;
+            this.throttle_idx = 6;
             this.rudder_idx = 2;
         }
         public double Elevator
@@ -99,20 +99,15 @@ namespace FlightSimulator2.model
             {
                 while (disconnect == false)
                 {
+                    
                     if (Client.client_instance.currentFlightState() == null) continue;
                     string[] flightsInsturment;
                     flightsInsturment = Client.client_instance.currentFlightState().Split(',');
-                    this.elevator = Convert.ToDouble(flightsInsturment[this.elevator_idx]);
-                    this.aileron = Convert.ToDouble(flightsInsturment[this.aileron_idx]);
-                    this.throttle = Convert.ToDouble(flightsInsturment[this.throttle_idx]);
-                    this.rudder = Convert.ToDouble(flightsInsturment[this.rudder_idx]);
-                    /*this.Flight_speed = Convert.ToDouble(flightsInsturment[speed_index]);
-                    this.Altimeter = Convert.ToDouble(flightsInsturment[altimeter_index]);
-                    this.Head_deg = Convert.ToDouble(flightsInsturment[headdeg_index]);
-                    this.Roll = flightsInsturment[roll_index];
-                    this.Yaw = flightsInsturment[yaw_index];
-                    this.Pitch = flightsInsturment[pitch_index];
-*/                }
+                    this.Elevator = Convert.ToDouble(flightsInsturment[this.elevator_idx]) * 100;
+                    this.Aileron = Convert.ToDouble(flightsInsturment[this.aileron_idx]) * 100;
+                    this.Throttle = Convert.ToDouble(flightsInsturment[this.throttle_idx]);
+                    this.Rudder = Convert.ToDouble(flightsInsturment[this.rudder_idx]);
+                }
             }).Start();
         }
     }

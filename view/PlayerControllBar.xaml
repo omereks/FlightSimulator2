@@ -9,14 +9,14 @@
              >
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="9*"/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
         </Grid.RowDefinitions>
-        <Slider Minimum="0" Maximum="{Binding VM_Number_of_rows}" Value="{Binding VM_Current_line, Mode=TwoWay}"  HorizontalAlignment="Left" Margin="85,48,0,0" VerticalAlignment="Top" Width="336" Background="Black" Grid.Row="1"/>
-        <Button x:Name="playOrPause" Content="Pause" HorizontalAlignment="Left" Margin="207,71,0,0" VerticalAlignment="Top" Width="44" Height="33" Click="Play_Click" Grid.Row="1"/>
-        <Button x:Name="diconnect" Content="disconnect" HorizontalAlignment="Left" Margin="85,77,0,0" VerticalAlignment="Top" Width="86" Background="Black" Foreground="White" Click="diconnect_Click" Grid.Row="1"/>
-        <TextBox x:Name="mt" HorizontalAlignment="Left" Height="19" Margin="432,47,0,0" TextWrapping="Wrap" Text="{Binding VM_Max_Time,Mode=TwoWay}" VerticalAlignment="Top" Width="66" Grid.Row="1"/>
-        <TextBox HorizontalAlignment="Left" Height="20" Margin="10,48,0,0" TextWrapping="Wrap" Text="{Binding VM_Current_time_string,Mode=TwoWay}" VerticalAlignment="Top" Width="67" Grid.Row="1"/>
+        <Slider Minimum="0" Maximum="{Binding VM_Number_of_rows}" Value="{Binding VM_Current_line, Mode=TwoWay}"  HorizontalAlignment="Left" Margin="75,0,0,0" VerticalAlignment="Top" Width="336" Background="Black" Grid.Row="0"/>
+        <Button x:Name="playOrPause" Content="Pause" HorizontalAlignment="Left" Margin="75,5,0,0" VerticalAlignment="Top" Width="44" Height="20" Click="Play_Click" Grid.Row="1"/>
+        <TextBox x:Name="mt" HorizontalAlignment="Left" Height="19" Margin="422,-1,0,0" TextWrapping="Wrap" Text="{Binding VM_Max_Time,Mode=TwoWay}" VerticalAlignment="Top" Width="66" Grid.Row="0"/>
+        <TextBox HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="{Binding VM_Current_time_string,Mode=TwoWay}" VerticalAlignment="Top" Width="67" Grid.Row="0"/>
+        <view:SpeedRatio  Grid.Row="1" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="276,5,0,0"/>
 
     </Grid>
 </UserControl>
