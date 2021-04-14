@@ -75,13 +75,17 @@
     <Compile Include="model\Client.cs" />
     <Compile Include="model\FeaturesGraphM.cs" />
     <Compile Include="model\FlightInsturmentsM.cs" />
+    <Compile Include="model\JoystickM.cs" />
     <Compile Include="model\LoadingFilesM.cs" />
     <Compile Include="model\PlayerControlBarM.cs" />
+    <Compile Include="model\RegresionLineM.cs" />
     <Compile Include="viewModel\AnomalyDetectorDllVM.cs" />
     <Compile Include="viewModel\FeaturesGraphVM.cs" />
     <Compile Include="viewModel\FlightInsturmentsVM.cs" />
+    <Compile Include="viewModel\JoystickVM.cs" />
     <Compile Include="viewModel\LoadingFilesVM.cs" />
     <Compile Include="viewModel\PlayerControllBarVM.cs" />
+    <Compile Include="viewModel\RegresionLineVM.cs" />
     <Compile Include="viewModel\SpeedRatioVM.cs" />
     <Compile Include="view\AnomalyDetectorDll.xaml.cs">
       <DependentUpon>AnomalyDetectorDll.xaml</DependentUpon>
@@ -92,11 +96,17 @@
     <Compile Include="view\FlightInsturments.xaml.cs">
       <DependentUpon>FlightInsturments.xaml</DependentUpon>
     </Compile>
+    <Compile Include="view\Joystick.xaml.cs">
+      <DependentUpon>Joystick.xaml</DependentUpon>
+    </Compile>
     <Compile Include="view\LoadingFiles.xaml.cs">
       <DependentUpon>LoadingFiles.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\PlayerControllBar.xaml.cs">
       <DependentUpon>PlayerControllBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\RegresionLine.xaml.cs">
+      <DependentUpon>RegresionLine.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\SpeedRatio.xaml.cs">
       <DependentUpon>SpeedRatio.xaml</DependentUpon>
@@ -125,6 +135,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="view\Joystick.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="view\LoadingFiles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -132,6 +146,10 @@
     <Page Include="view\PlayerControllBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\RegresionLine.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="view\SpeedRatio.xaml">
       <SubType>Designer</SubType>
