@@ -8,12 +8,16 @@
 * [UML](#uml)
 * [Youtube Video](#youtube-video)
 
+
+
+
 ## General info
 This project is a Flight Simulator Research Tool.
 Part of Advenced Programing 2 at Bar-Ilan University.
 This project was build with MVVM Methodology.
 
 
+![](https://i2.paste.pics/C77JW.png?trs=475c231022680624d5590487b5db54382c3c1bd4cf6636753bc4d2d0f400a67e)
 
 
 ### Main Features:
