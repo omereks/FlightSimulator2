@@ -8,7 +8,7 @@
              >
     <Grid  RenderTransformOrigin="0.5,0.5">
         <ProgressBar Value="{Binding VM_Flight_speed, Mode=TwoWay}" HorizontalAlignment="Left" Height="14" Margin="186,79,0,0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.5,0.5" Minimum="0" Maximum="350" Foreground="#FFFF7400"/>
-        <Label Content="Speed" HorizontalAlignment="Left" Margin="117,68,0,0" VerticalAlignment="Top" Height="25" Width="48" Background="White"/>
+        <Label Content="Speed" HorizontalAlignment="Left" Margin="120,70,0,0" VerticalAlignment="Top" Height="25" Width="48" Background="White"/>
         <Label Content="0" HorizontalAlignment="Left" Margin="170,74,0,0" VerticalAlignment="Top" Background="{x:Null}">
             <Label.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -36,7 +36,7 @@
             </Slider.RenderTransform>
         </Slider>
         <Label Content="Altimeter" HorizontalAlignment="Left" Margin="117,37,0,0" VerticalAlignment="Top" Width="58" Background="White"/>
-        <Label Content="{Binding VM_Altimeter, Mode=TwoWay}" HorizontalAlignment="Center" Margin="0,15,0,0" VerticalAlignment="Top" Width="72" Height="31" FontSize="16" Background="{x:Null}">
+        <Label Content="{Binding VM_Altimeter, Mode=TwoWay}" HorizontalAlignment="Center" Margin="111,6,81.8,0" VerticalAlignment="Top" Width="72" Height="31" FontSize="16" Background="{x:Null}">
             <Label.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black" Offset="0"/>

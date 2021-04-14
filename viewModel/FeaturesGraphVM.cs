@@ -13,7 +13,7 @@ using FlightSimulator2.viewModel;
 
 namespace FlightSimulator2.viewModel
 {
-    
+
 
     public class FeaturesGraphVM : INotifyPropertyChanged
     {
@@ -34,7 +34,9 @@ namespace FlightSimulator2.viewModel
         public string NameOfFeatureSelected
         {
             get { return nameOfFeatureSelected; }
-            set { nameOfFeatureSelected = value;
+            set
+            {
+                nameOfFeatureSelected = value;
                 NotifyPropertyChanged(nameof(NameOfFeatureSelected));
                 VM_CorrelatedF = model.getCorreltadFeature(value);
             }
@@ -77,6 +79,35 @@ namespace FlightSimulator2.viewModel
             }
         }
 
+        public List<DataPoint> VM_RegPoints
+        {
+            get
+            {
+                return model.RegPoints;
+            }
+
+            set
+            {
+                model.RegPoints = value;
+                NotifyPropertyChanged(nameof(VM_RegPoints));
+            }
+        }
+
+        public List<DataPoint> VM_RegPoints30
+        {
+            get
+            {
+                return model.RegPoints30;
+            }
+
+            set
+            {
+                model.RegPoints30 = value;
+                NotifyPropertyChanged(nameof(VM_RegPoints30));
+            }
+        }
+
+
         public List<DataPoint> VM_Points
         {
             get { return model.M_Points; }
@@ -100,7 +131,7 @@ namespace FlightSimulator2.viewModel
 
         public void featureSelected(int selectedIndex)
         {
-            
+
             this.model.FeatureSelected(selectedIndex);
         }
 

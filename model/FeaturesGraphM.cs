@@ -15,6 +15,7 @@ namespace FlightSimulator2.model
 
         // index of selected feature
         private static int indexOfFeature;
+        private List<DataPoint> regPoints, regPoints30;
         public static int IndexOfFeature
         {
             get { return indexOfFeature; }
@@ -23,6 +24,35 @@ namespace FlightSimulator2.model
                 indexOfFeature = value;
             }
         }
+
+        public List<DataPoint> RegPoints
+        {
+            get
+            {
+                return regPoints;
+            }
+
+            set
+            {
+                regPoints = value;
+                NotifyPropertyChanged(nameof(RegPoints));
+            }
+        }
+
+        public List<DataPoint> RegPoints30
+        {
+            get
+            {
+                return regPoints30;
+            }
+
+            set
+            {
+                regPoints30 = value;
+                NotifyPropertyChanged(nameof(RegPoints30));
+            }
+        }
+
         // index of correlated feature
         private static int indexOfCorrelatedFeature;
         public static int IndexOfCorrelatedFeature
@@ -44,20 +74,20 @@ namespace FlightSimulator2.model
             new Thread(delegate ()
             {
 
-            while (isConnected)
-            {
-                Thread.Sleep(100);
-                if (Client.client_instance.currentFlightState() == null) { continue; }
-                string[] flightsInsturment;
-                flightsInsturment = Client.client_instance.currentFlightState().Split(',');
+                while (isConnected)
+                {
+                    Thread.Sleep(100);
+                    if (Client.client_instance.currentFlightState() == null) { continue; }
+                    string[] flightsInsturment;
+                    flightsInsturment = Client.client_instance.currentFlightState().Split(',');
 
-                    
+
 
                     if (Client.client_instance.getCurrentLine() != -99)
                     {
                         // get current line number
                         currentLine = Client.client_instance.getCurrentLine();
-                        
+
                     }
                     // if user takes the control bar reverse
                     if (M_Points.Count != 0 && M_Points.Last().X > currentLine)
@@ -73,20 +103,30 @@ namespace FlightSimulator2.model
                     M_Points.Add(feature);
                     M_CorrelatedPoints.Add(correlated);
 
+                    regPoints30.Add(new DataPoint(feature.Y, correlated.Y));
+                    if (regPoints30.Count() > 50)
+                    {
+                        regPoints.Add(regPoints30[0]);
+                        regPoints30.RemoveAt(0);
+                    }
+
+
                     if (M_Points.Count > 2)
                     {
                         M_LineReg.Clear();
                         reg_line.linear_regg(M_Points, M_CorrelatedPoints, M_Points.Count());
-                        
-                        Console.WriteLine(M_Points[0].X + " , " + reg_line.f(M_Points[0].Y));
+
+                        //Console.WriteLine(M_Points[0].X + " , " + reg_line.f(M_Points[0].Y));
                         M_LineReg.Add(new DataPoint(M_Points[0].X, reg_line.f(M_Points[0].Y)));
-                        Console.WriteLine(currentLine + " , " + reg_line.f(M_CorrelatedPoints[M_CorrelatedPoints.Count - 1].Y));
-                        M_LineReg.Add(new DataPoint(currentLine,  reg_line.f(M_CorrelatedPoints[M_CorrelatedPoints.Count - 1].Y)));
+                        //Console.WriteLine(currentLine + " , " + reg_line.f(M_CorrelatedPoints[M_CorrelatedPoints.Count - 1].Y));
+                        M_LineReg.Add(new DataPoint(currentLine, reg_line.f(M_CorrelatedPoints[M_CorrelatedPoints.Count - 1].Y)));
                     }
-                   // M_LineReg.Add(feature);
+
+
+                    // M_LineReg.Add(feature);
                 }
             }).Start();
-        } 
+        }
 
         // name of correlated feature
         private string correlatdeF;
@@ -156,7 +196,8 @@ namespace FlightSimulator2.model
         {
             M_Points.Clear();
             M_CorrelatedPoints.Clear();
-
+            regPoints.Clear();
+            regPoints30.Clear();
             indexOfFeature = selectedIndex;
             string feature = listOfFeaturesNames[selectedIndex];
             int index = 0;
@@ -245,6 +286,8 @@ namespace FlightSimulator2.model
 
         public FeaturesGraphM()
         {
+            regPoints = new List<DataPoint>();
+            regPoints30 = new List<DataPoint>();
             initFeaturesList();
             updateFeaturesList();
         }

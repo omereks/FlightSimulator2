@@ -154,8 +154,10 @@ namespace FlightSimulator2.model
             String line_reg = control_bar.getFlightState();
             new Thread(delegate ()
             {
+
                 while (line_reg != null)
                 {
+                    
                     //read a line from CSV reg
                     line_reg += "\n";
                     Byte[] lineInBytes = System.Text.Encoding.ASCII.GetBytes(line_reg);

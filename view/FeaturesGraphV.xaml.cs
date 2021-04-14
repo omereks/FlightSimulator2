@@ -25,7 +25,7 @@ namespace FlightSimulator2.view
     /// </summary>
     public partial class FeaturesGraphV : UserControl
     {
-       
+
 
         private FeaturesGraphVM _viewModel;
         public FeaturesGraphVM _ViewModel
@@ -37,7 +37,7 @@ namespace FlightSimulator2.view
 
         public FeaturesGraphV()
         {
-            
+
             InitializeComponent();
             _viewModel = new FeaturesGraphVM(new FeaturesGraphM());
             DataContext = _viewModel;

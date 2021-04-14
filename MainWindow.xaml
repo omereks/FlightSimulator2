@@ -16,11 +16,11 @@
             <RowDefinition Height="450*"/>
             <RowDefinition Height="100*"/>
         </Grid.RowDefinitions>
-        <view:LoadingFiles Grid.Row="0" x:Name="hk"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-        <view:FeaturesGraphV Grid.Row="1" Grid.RowSpan="2" x:Name="fg"  HorizontalAlignment="Left" Margin="15,15,0,0" VerticalAlignment="Top" Loaded="fg_Loaded"/>
-        <view:FlightInsturments Grid.Row="1" x:Name="fs" HorizontalAlignment="Right"  VerticalAlignment="Top" Margin="0,20,0,0" />
-        <view:PlayerControllBar Grid.Row="2" x:Name="ds" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,9,0,0"     />
-        <view:AnomalyDetectorDll x:Name="ad" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="254,29,0,-13" Height="454" Grid.RowSpan="2" Width="738" Grid.Row="1"   />
-        <view:Joystick  x:Name="js" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,142,50,0"/>
+        <view:LoadingFiles Grid.Row="0" x:Name="hk"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,-0.4,124.2" />
+        <view:FeaturesGraphV Grid.RowSpan="2" x:Name="fg"  HorizontalAlignment="Left" Margin="21,180,0,0" VerticalAlignment="Top" Loaded="fg_Loaded"/>
+        <view:FlightInsturments x:Name="fs" HorizontalAlignment="Right"  VerticalAlignment="Top" Margin="0,275,25.6,0" Grid.RowSpan="2" />
+        <view:PlayerControllBar Grid.Row="1" x:Name="ds" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="230,289.8,255.6,0"     />
+        <view:AnomalyDetectorDll x:Name="ad" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10,0,245.6,-76.6" Height="454" Grid.RowSpan="2" Width="738" Loaded="ad_Loaded" Grid.Row="1"   />
+        <view:Joystick  x:Name="js" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,152.8,57.6,0"/>
     </Grid>
 </Window>

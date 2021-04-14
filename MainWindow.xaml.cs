@@ -32,5 +32,10 @@ namespace FlightSimulator2
         {
 
         }
+
+        private void ad_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
