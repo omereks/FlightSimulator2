@@ -22,11 +22,14 @@ namespace FlightSimulator2.view
     public partial class AnomalyDetectorDll : UserControl
     {
         AnomalyDetectorDllVM vm_detector;
+        int x = 0;
+        List<User> items;
         public AnomalyDetectorDll()
         {
             InitializeComponent();
             this.vm_detector = new AnomalyDetectorDllVM(new AnomalyDetectorDllM());
             DataContext = vm_detector;
+            items = new List<User>();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -57,13 +60,20 @@ namespace FlightSimulator2.view
 
         private void startDetect_Click(object sender, RoutedEventArgs e)
         {
+            // for(int i = 0; i < x; i++)
+            for (int i = 0; i < x; i++)
+            {
+                foreach (User r in items) items[i].Time = null;
+            }
             List<anomalyReport> reports = new List<anomalyReport>();
             this.vm_detector.detect();
             reports = this.vm_detector.reports();
             int reports_number = reports.Count();
-            List<User> items = new List<User>();
+           // List<User>
+             items = new List<User>();
             for (int i = 0; i < reports_number; i++)
             {
+                ++x;
                 items.Add(new User() { First = reports[i].first_element, Second = reports[i].second_element, Time = reports[i].timeStep,Detect = reports[i].detector_type});
 
             }

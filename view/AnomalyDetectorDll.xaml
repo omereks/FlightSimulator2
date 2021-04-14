@@ -13,10 +13,10 @@
         <Button x:Name="startDetect" Content="Detect" HorizontalAlignment="Left" Margin="-228,29,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Click="startDetect_Click"/>
         <ListView Margin="-49,10,49,85" Name="lvUsers">
             <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="First Attribute" Width="120" DisplayMemberBinding="{Binding First}" />
+                <GridView x:Name="grids">
+                    <GridViewColumn x:Name="firs1" Header="First Attribute" Width="120" DisplayMemberBinding="{Binding First}" />
                     <GridViewColumn Header="Second Attribute" Width="120" DisplayMemberBinding="{Binding Second}" />
-                    <GridViewColumn Header="Time" Width="120" DisplayMemberBinding="{Binding Time}" />
+                    <GridViewColumn Header="Time" Width="120" DisplayMemberBinding="{Binding Time,Mode=TwoWay}" />
                     <GridViewColumn Header="Detector Type" Width="120" DisplayMemberBinding="{Binding Detect}" />
                 </GridView>
             </ListView.View>

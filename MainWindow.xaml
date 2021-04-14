@@ -6,20 +6,20 @@
         xmlns:local="clr-namespace:FlightSimulator2"
         xmlns:view="clr-namespace:FlightSimulator2.view"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="1500">
+        Title="Flight Simulator" Height="800" Width="1000">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100*"/>
+            <RowDefinition Height="350*"/>
+            <RowDefinition Height="450*"/>
             <RowDefinition Height="100*"/>
         </Grid.RowDefinitions>
-        <view:FeaturesGraphV x:Name="fg"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="637" Height="425" Margin="0,-48,856.6,43" Loaded="fg_Loaded" Grid.RowSpan="2"/>
-        <view:LoadingFiles x:Name="hk"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="664" Height="197" Margin="810,13,19.6,0.4" />
-        <view:PlayerControllBar x:Name="ds" HorizontalAlignment="Center" VerticalAlignment="Center" Width="764" Height="422" Margin="112,68,617.6,-70" Grid.RowSpan="2" />
-        <view:SpeedRatio x:Name="sr" HorizontalAlignment="Center" VerticalAlignment="Center"   Margin="160,98.6,1150.6,94" Grid.Row="1" Width="183" Height="17" />
-        <view:FlightInsturments x:Name="fs" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="98,-5,897,81" Grid.RowSpan="2" Height="344" Width="497" />
-        <view:AnomalyDetectorDll x:Name="dll" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="665,68,19,-99" Grid.RowSpan="2" Height="451" Width="808"/>
+        <view:LoadingFiles Grid.Row="0" x:Name="hk"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        <view:FeaturesGraphV Grid.Row="1" Grid.RowSpan="2" x:Name="fg"  HorizontalAlignment="Left" Margin="15,15,0,0" VerticalAlignment="Top" Loaded="fg_Loaded"/>
+        <view:FlightInsturments Grid.Row="1" x:Name="fs" HorizontalAlignment="Right" Margin="0,15,15,0" VerticalAlignment="Top" />
+        <view:PlayerControllBar Grid.Row="1" x:Name="ds" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="195,111,299,23" Height="336" Grid.RowSpan="2"   />
+        <view:AnomalyDetectorDll x:Name="ad" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="254,29,0,-13" Height="454" Grid.RowSpan="2" Width="738" Grid.Row="1"   />
     </Grid>
 </Window>
