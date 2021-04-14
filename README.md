@@ -25,12 +25,13 @@ This project was built with MVVM Methodology on .NET Framework.
 *
 
 ### Main Features:
-* Server-Client connection with FlightGear
+* Server-Client connection with FlightGear.
 * UI for Copy Playback_small.Xml File and Connect to FlightGear with csv file.
 ![](https://i2.paste.pics/C6W96.png?trs=475c231022680624d5590487b5db54382c3c1bd4cf6636753bc4d2d0f400a67e)
 * Scrolling through time with the time scroller - you can jump whenever you want and you can change the speed ratio, see the current Time, play and pause the Simulator.
 ![](https://i2.paste.pics/C727K.png?trs=475c231022680624d5590487b5db54382c3c1bd4cf6636753bc4d2d0f400a67e)
-* you can see the joystick of the pilot, also you can see the throttle and rudder position in every second. 
+* You can see the joystick of the pilot, also you can see the throttle and rudder position in every second.
+* You can see a with updated while flying Heading Deg compass.
 * Visualing data of the plane and Stick:
 ![](https://i2.paste.pics/C6WBC.png?trs=475c231022680624d5590487b5db54382c3c1bd4cf6636753bc4d2d0f400a67e)
 ![](https://i2.paste.pics/C72BV.png?trs=475c231022680624d5590487b5db54382c3c1bd4cf6636753bc4d2d0f400a67e)
@@ -39,8 +40,8 @@ This project was built with MVVM Methodology on .NET Framework.
 * the value of the Feature which chosen in the list, in the right graph the Y axis is the value of the most
 * correlated feature.
 ![](https://i2.paste.pics/C782W.png)
-* Upload Dll for Research your Flight and find some Errors. You can chose any Anomaly Detection Algorithn you want
-* for more info check the DLL info and the API
+* Upload Dll for Research your Flight and find some Errors. You can chose any Anomaly Detection Algorithn you want.
+* for more info check the DLL info and the API.
 ![](https://i2.paste.pics/C783D.png)
 	
   
@@ -49,9 +50,9 @@ This project was built with MVVM Methodology on .NET Framework.
 ## File Organiztion
 Project is created with:
 * View Folder - Contains all the Views and Imges.
-* ViewModel Folder - Contains all the ViewModels
-* Model Folder - Contains all the Models
-* Plugin - Contains all the Plugin and the Api for more Plugins
+* ViewModel Folder - Contains all the ViewModels.
+* Model Folder - Contains all the Models.
+* Plugin - Contains all the Plugin and the Api for more Plugins.
 
 
 
