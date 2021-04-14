@@ -42,6 +42,7 @@ Project is created with:
 * View Folder - Contains all the Views and Imgs.
 * ViewModel Folder - Contains all the ViewModels
 * Model Folder - Contains all the Models
+* Plugin - Contains all the Plugin and the Api for more Plugins
 
 
 
