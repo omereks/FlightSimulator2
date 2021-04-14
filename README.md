@@ -27,11 +27,13 @@ This project was build with MVVM Methodology.
 * Scrolling through time with the time scroller - you can jump whenever you want and you can change the speed ratio, see the current Time, play and pause the Simulator.
 ![](https://i2.paste.pics/C727K.png?trs=475c231022680624d5590487b5db54382c3c1bd4cf6636753bc4d2d0f400a67e)
 * you can see the joystick of the pilot
-
 * Visualing data of the plane and Stick:
 ![](https://i2.paste.pics/C6WBC.png?trs=475c231022680624d5590487b5db54382c3c1bd4cf6636753bc4d2d0f400a67e)
 ![](https://i2.paste.pics/C72BV.png?trs=475c231022680624d5590487b5db54382c3c1bd4cf6636753bc4d2d0f400a67e)
-
+* Visual Graphs: you can see 3 Graphs: Feature Graph, Coralate Graph and Regeression Graph
+![](https://i2.paste.pics/C782W.png)
+* Upload Dll for Research your Flight and find some Errors
+* [](https://i2.paste.pics/C783D.png)
 
 	
   
@@ -74,11 +76,10 @@ Download playback_small.xml from the Model.
 * ENJOY
 
 ## UML
-To run this project, install it locally using npm:
+Need To Add
 
 
 
 
 ## Youtube Video
-To run this project, install it locally using npm:
-
+Need To Add
