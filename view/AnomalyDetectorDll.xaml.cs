@@ -60,11 +60,7 @@ namespace FlightSimulator2.view
 
         private void startDetect_Click(object sender, RoutedEventArgs e)
         {
-            // for(int i = 0; i < x; i++)
-            for (int i = 0; i < x; i++)
-            {
-                foreach (User r in items) items[i].Time = null;
-            }
+            lvUsers.ItemsSource = null;
             List<anomalyReport> reports = new List<anomalyReport>();
             this.vm_detector.detect();
             reports = this.vm_detector.reports();

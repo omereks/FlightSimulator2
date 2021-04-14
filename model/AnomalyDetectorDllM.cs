@@ -103,6 +103,9 @@ static class NativeMethods // Using kernel dll for finding the process!
         }
         public void Anomalychoosen()
         {
+            // clear the reports (for the case the user changed the dll)
+            this.report_size = 0;
+            this.anomaly_reports.Clear();
             this.real_flight_path = Client.client_instance.From_reg;
             this.real_flight_path += "\\reg_flight.csv";
             if (this.dll_path == null) return;
