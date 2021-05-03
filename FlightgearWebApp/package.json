@@ -1,0 +1,20 @@
+{
+    "main": "lib/binding.js",
+    "dependencies": {
+        "node-addon-api": "^1.7.2"
+    },
+    "scripts": {
+        "pretest": "tsc",
+        "test": "node --napi-modules ./test/test_binding.js"
+    },
+    "gypfile": true,
+    "name": "flightgearwebapp",
+    "version": "1.0.0",
+    "description": "web app for flight gear",
+    "devDependencies": {
+        "@types/node": "^7.0.22",
+        "typescript": "^2.3.3"
+    },
+    "author": "",
+    "license": "ISC"
+}
